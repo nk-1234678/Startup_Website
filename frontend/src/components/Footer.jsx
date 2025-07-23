@@ -12,10 +12,10 @@ import { FiMail, FiMapPin, FiPhone, FiClock, FiArrowRight } from "react-icons/fi
 
 const Footer = () => {
   return (
-    <footer className="bg-white text-[#38404f] pt-12 px-4 md:px-8 lg:px-16 border-t border-[#e0e0e0]">
+    <footer className="bg-white text-charcoal-ink pt-14 px-4 md:px-8 lg:px-16 border-t border-gray-200">
       <div className="max-w-7xl mx-auto">
-        {/* CTA Section - Updated with #2c2d67 background */}
-        <div className="bg-[#2c2d67] text-white rounded-xl p-8 md:p-10 mb-12 shadow-lg">
+        {/* CTA Section */}
+        <div className="bg-indigo-night text-white rounded-xl p-8 md:p-10 mb-12 shadow-lg">
           <div className="flex flex-col md:flex-row items-center justify-between gap-8">
             <div className="text-center md:text-left max-w-2xl">
               <h2 className="text-2xl md:text-3xl font-bold mb-3">
@@ -32,9 +32,9 @@ const Footer = () => {
                 <input
                   type="email"
                   placeholder="Your email address"
-                  className="flex-1 px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#ff6612] text-[#38404f]"
+                  className="flex-1 px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-clay-orange text-charcoal-ink"
                 />
-                <button className="bg-[#ff6612] hover:bg-[#e55b0f] text-white px-6 py-3 rounded-lg font-medium flex items-center justify-center gap-2 transition-colors">
+                <button className="bg-clay-orange hover:bg-[#B94700] text-white px-6 py-3 rounded-lg font-medium flex items-center justify-center gap-2 transition-colors duration-200">
                   Subscribe <FiArrowRight />
                 </button>
               </div>
@@ -46,27 +46,27 @@ const Footer = () => {
         </div>
 
         {/* Main Footer Content */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12 pb-12 border-b border-[#e0e0e0]">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12 pb-12 border-b border-gray-200">
           {/* Contact Info */}
           <div>
-            <h5 className="font-bold text-lg mb-4 text-[#2c2d67] border-l-4 border-[#ff6612] pl-3">
+            <h5 className="font-bold text-lg mb-4 text-indigo-night border-l-4 border-clay-orange pl-3">
               Contact Us
             </h5>
             <ul className="space-y-3">
               <li className="flex items-start gap-3">
-                <FiMapPin className="text-[#ff6612] mt-1" />
+                <FiMapPin className="text-clay-orange mt-1" />
                 <span>123 Artisan Street, Craft District, India</span>
               </li>
               <li className="flex items-start gap-3">
-                <FiMail className="text-[#ff6612] mt-1" />
+                <FiMail className="text-clay-orange mt-1" />
                 <span>support@handmadeheritage.com</span>
               </li>
               <li className="flex items-start gap-3">
-                <FiPhone className="text-[#ff6612] mt-1" />
+                <FiPhone className="text-clay-orange mt-1" />
                 <span>+91 98765 43210</span>
               </li>
               <li className="flex items-start gap-3">
-                <FiClock className="text-[#ff6612] mt-1" />
+                <FiClock className="text-clay-orange mt-1" />
                 <span>Mon-Sat: 10AM - 7PM</span>
               </li>
             </ul>
@@ -74,14 +74,14 @@ const Footer = () => {
 
           {/* Quick Links */}
           <div>
-            <h5 className="font-bold text-lg mb-4 text-[#2c2d67] border-l-4 border-[#ff6612] pl-3">
+            <h5 className="font-bold text-lg mb-4 text-indigo-night border-l-4 border-clay-orange pl-3">
               Quick Links
             </h5>
             <ul className="space-y-3">
               {['About Us', 'Our Artisans', 'Shipping Policy', 'Returns', 'FAQs'].map((item) => (
                 <li key={item}>
-                  <a href="#!" className="hover:text-[#ff6612] transition-colors flex items-center gap-2">
-                    <span className="w-2 h-2 bg-[#ff6612] rounded-full opacity-0 hover:opacity-100 transition-opacity"></span>
+                  <a href="#!" className="hover:text-clay-orange transition-colors duration-200 flex items-center gap-2">
+                    <span className="w-2 h-2 bg-clay-orange rounded-full opacity-0 hover:opacity-100 transition-opacity duration-200"></span>
                     {item}
                   </a>
                 </li>
@@ -91,10 +91,10 @@ const Footer = () => {
 
           {/* Social Media */}
           <div>
-            <h5 className="font-bold text-lg mb-4 text-[#2c2d67] border-l-4 border-[#ff6612] pl-3">
+            <h5 className="font-bold text-lg mb-4 text-indigo-night border-l-4 border-clay-orange pl-3">
               Follow Us
             </h5>
-            <div className="flex flex-wrap gap-4">
+            <div className="flex flex-wrap gap-3">
               {[
                 { icon: faFacebook, name: 'Facebook' },
                 { icon: faInstagram, name: 'Instagram' },
@@ -106,7 +106,7 @@ const Footer = () => {
                 <a 
                   key={social.name}
                   href="#!" 
-                  className="w-10 h-10 bg-[#f5f5f5] rounded-full flex items-center justify-center text-[#2c2d67] hover:bg-[#ff6612] hover:text-white transition-colors"
+                  className="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center text-indigo-night hover:bg-clay-orange hover:text-white transition-colors duration-200"
                   aria-label={social.name}
                 >
                   <FontAwesomeIcon icon={social.icon} />
@@ -117,19 +117,19 @@ const Footer = () => {
 
           {/* Newsletter */}
           <div>
-            <h5 className="font-bold text-lg mb-4 text-[#2c2d67] border-l-4 border-[#ff6612] pl-3">
+            <h5 className="font-bold text-lg mb-4 text-indigo-night border-l-4 border-clay-orange pl-3">
               Stay Updated
             </h5>
-            <p className="mb-4">
+            <p className="mb-4 text-ash-gray">
               Get the latest updates on new products and upcoming sales
             </p>
             <div className="flex gap-2">
               <input
                 type="email"
                 placeholder="Your email"
-                className="flex-1 px-4 py-2 border border-[#e0e0e0] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#ff6612]"
+                className="flex-1 px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-clay-orange"
               />
-              <button className="bg-[#ff6612] hover:bg-[#e55b0f] text-white px-4 py-2 rounded-lg transition-colors">
+              <button className="bg-clay-orange hover:bg-[#B94700] text-white px-4 py-2 rounded-lg transition-colors duration-200">
                 <FiArrowRight />
               </button>
             </div>
@@ -138,17 +138,17 @@ const Footer = () => {
 
         {/* Bottom Footer */}
         <div className="py-6 flex flex-col md:flex-row justify-between items-center gap-4">
-          <div className="text-sm text-[#38404f]/80">
+          <div className="text-sm text-ash-gray">
             © {new Date().getFullYear()} Handmade Heritage. All rights reserved.
           </div>
           <div className="flex flex-wrap justify-center gap-4 text-sm">
             {['Privacy Policy', 'Terms of Service', 'Shipping Policy'].map((item) => (
-              <a key={item} href="#!" className="hover:text-[#ff6612] transition-colors">
+              <a key={item} href="#!" className="hover:text-clay-orange transition-colors duration-200">
                 {item}
               </a>
             ))}
           </div>
-          <div className="flex items-center gap-2 text-sm">
+          <div className="flex items-center gap-2 text-sm text-ash-gray">
             <span>Payment Methods:</span>
             <div className="flex gap-2">
               {['💳', '📱', '💰'].map((emoji, i) => (
