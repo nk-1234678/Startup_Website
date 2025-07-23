@@ -304,6 +304,7 @@
 import { FiArrowRight, FiCheck, FiShoppingBag, FiStar } from 'react-icons/fi';
 import { FaHandsHelping, FaLeaf, FaShippingFast } from 'react-icons/fa';
 import { FiMapPin } from 'react-icons/fi';
+import FAQSection from './HomeComponents/Faq';
 
 const HomePage = () => {
   return (
@@ -631,6 +632,7 @@ const HomePage = () => {
           </div>
         </div>
       </section>
+      <FAQSection/>
     </div>
   );
 };

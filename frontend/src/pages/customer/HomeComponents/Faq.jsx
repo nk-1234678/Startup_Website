@@ -1,90 +1,95 @@
-import { useState } from 'react';
+import { FiChevronDown, FiChevronUp } from "react-icons/fi";
+import { useState } from "react";
 
-const FAQ = () => {
+const FAQSection = () => {
+  const faqs = [
+    {
+      question: "What makes your regional products special?",
+      answer: "Each product in our collection is handcrafted by local artisans using traditional techniques passed down through generations. We work directly with craftspeople to ensure authenticity and fair compensation for their work."
+    },
+    {
+      question: "How do you source your products?",
+      answer: "Our team travels across India to discover hidden artisans and authentic regional crafts. We verify the origin and craftsmanship of every item before bringing it to our platform."
+    },
+    {
+      question: "Can I visit the artisans or workshops?",
+      answer: "Yes! We organize cultural immersion tours to artisan communities. Contact our experiences team to learn about upcoming opportunities to meet the makers."
+    },
+    {
+      question: "How does my purchase support local communities?",
+      answer: "80% of each sale goes directly to the artisan or their cooperative. The remaining 20% helps us sustain our platform, provide marketing support, and fund artisan development programs."
+    },
+    {
+      question: "What if I'm not satisfied with my purchase?",
+      answer: "We offer a 30-day happiness guarantee. If you're not completely satisfied, you can return the item for a full refund or exchange. Some handmade items may have slight variations that make them uniquely special."
+    },
+    {
+      question: "Do you offer international shipping?",
+      answer: "Yes! We ship worldwide with careful packaging to protect your treasures. International orders typically arrive within 10-15 business days, depending on customs processing."
+    }
+  ];
+
   const [activeIndex, setActiveIndex] = useState(null);
 
   const toggleFAQ = (index) => {
     setActiveIndex(activeIndex === index ? null : index);
   };
 
-  const faqs = [
-    {
-      question: "How do I know the products are authentic?",
-      answer: "We personally vet every artisan and product on our platform. Each item comes with information about its maker, materials used, and production process. Many products include certificates of authenticity."
-    },
-    {
-      question: "What regions do you currently work with?",
-      answer: "We currently feature artisans from 30 regions across India, including Kashmir (Pashmina), Rajasthan (Blue Pottery), West Bengal (Dokra), Gujarat (Patola), and more. We're constantly expanding to new regions."
-    },
-    {
-      question: "How are prices determined for artisan products?",
-      answer: "Prices reflect fair compensation for the artisan's time, skill, and materials. We work directly with artisans to set prices that allow them sustainable livelihoods while keeping products accessible to customers."
-    },
-    {
-      question: "Can I request custom orders from artisans?",
-      answer: "Yes! Many of our artisans accept custom orders. You can make special requests through the product page or contact our customer service to facilitate the conversation with the artisan."
-    },
-    {
-      question: "How can I become an artisan on your platform?",
-      answer: "We welcome new artisans! Visit our 'Become an Artisan' page to submit your application. Our team will review your work and get back to you within 7-10 business days."
-    },
-    {
-      question: "What's your return policy for handmade items?",
-      answer: "Due to the nature of handmade goods, we accept returns within 14 days for damaged or significantly not-as-described items. Custom orders are generally non-returnable unless defective."
-    }
-  ];
-
   return (
-    <section className="py-20 bg-white">
-      <div className="container mx-auto px-6">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-charcoal-ink mb-4">
-            Frequently Asked <span className="text-clay-orange">Questions</span>
-          </h2>
-          <div className="w-20 h-1 bg-malachite-green mx-auto mb-6"></div>
-          <p className="text-lg text-ash-gray max-w-3xl mx-auto">
-            Find answers to common queries about our artisan marketplace
+    <section className="bg-[#f4f1e9] py-16 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-4xl mx-auto">
+        <div className="text-center mb-12">
+          <h2 className="text-3xl font-bold text-[#2a2a2a] mb-4">Preserving Heritage, One Purchase at a Time</h2>
+          <p className="text-[#5a5a5a] max-w-2xl mx-auto">
+            Answers to common questions about our mission, products, and the communities we support
           </p>
         </div>
-        
-        <div className="max-w-3xl mx-auto">
+
+        <div className="space-y-4">
           {faqs.map((faq, index) => (
             <div 
               key={index} 
-              className="mb-4 border-b border-gray-200 last:border-b-0"
+              className="border border-[#5a5a5a]/20 rounded-lg overflow-hidden bg-[#f9f8f5]"
             >
               <button
+                className="w-full flex justify-between items-center p-6 text-left focus:outline-none"
                 onClick={() => toggleFAQ(index)}
-                className="flex justify-between items-center w-full py-5 text-left focus:outline-none"
               >
-                <h3 className="text-lg font-semibold text-charcoal-ink">
+                <h3 className="font-medium text-lg text-[#2a2a2a]">
                   {faq.question}
                 </h3>
-                <span className="ml-4">
-                  {activeIndex === index ? (
-                    <svg className="w-5 h-5 text-clay-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
-                    </svg>
-                  ) : (
-                    <svg className="w-5 h-5 text-ash-gray" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
-                    </svg>
-                  )}
+                <span className="ml-4 text-[#7a9f79]">
+                  {activeIndex === index ? <FiChevronUp size={20} /> : <FiChevronDown size={20} />}
                 </span>
               </button>
+              
               <div 
-                className={`overflow-hidden transition-all duration-300 ${activeIndex === index ? 'max-h-96 pb-5' : 'max-h-0'}`}
+                className={`px-6 pb-6 pt-0 transition-all duration-300 ease-in-out ${activeIndex === index ? 'block' : 'hidden'}`}
               >
-                <p className="text-ash-gray">
+                <p className="text-[#5a5a5a]">
                   {faq.answer}
                 </p>
+                {index === 2 && (
+                  <button className="mt-4 text-[#7a9f79] hover:underline text-sm flex items-center">
+                    Learn more about artisan experiences <FiChevronDown className="ml-1 transform rotate-90" />
+                  </button>
+                )}
               </div>
             </div>
           ))}
+        </div>
+
+        <div className="mt-12 text-center">
+          <p className="text-[#5a5a5a] mb-6">
+            Still have questions? Our cultural ambassadors are here to help.
+          </p>
+          <button className="bg-[#7a9f79] hover:bg-[#6a8f69] text-white px-6 py-3 rounded-lg font-medium transition duration-300">
+            Contact Our Support Team
+          </button>
         </div>
       </div>
     </section>
   );
 };
 
-export default FAQ;
+export default FAQSection;
