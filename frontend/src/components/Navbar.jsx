@@ -35,19 +35,19 @@ const Navbar = () => {
         <div className="flex gap-8 font-medium text-[#1F1F1F]">
           <Link 
             to="/" 
-            className="hover:text-[#D35400] transition-colors duration-200 font-semibold"
+            className="hover:text-[#e8b954] transition-colors duration-200 font-semibold"
           >
             Home
           </Link>
           <Link 
             to="/shop" 
-            className="hover:text-[#D35400] transition-colors duration-200 font-semibold"
+            className="hover:text-[#e8b954] transition-colors duration-200 font-semibold"
           >
             Shop
           </Link>
           <Link 
             to="/artisans" 
-            className="hover:text-[#D35400] transition-colors duration-200 font-semibold"
+            className="hover:text-[#e8b954] transition-colors duration-200 font-semibold"
           >
             Artisans
           </Link>
@@ -57,9 +57,9 @@ const Navbar = () => {
         <div className="flex items-center gap-6">
           {/* Cart */}
           <Link to="/cart" className="relative group">
-            <div className="p-2 rounded-full hover:bg-[#D35400]/10 transition-colors duration-200">
-              <ShoppingCart className="w-5 h-5 text-[#1F1F1F] group-hover:text-[#D35400] transition-colors" />
-              <span className="absolute -top-1 -right-1 bg-[#D35400] text-white text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center">
+            <div className="p-2 rounded-full hover:bg-[#e8b954]/10 transition-colors duration-200">
+              <ShoppingCart className="w-5 h-5 text-[#1F1F1F] group-hover:text-[#e8b954] transition-colors" />
+              <span className="absolute -top-1 -right-1 bg-[#e8b954] text-white text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center">
                 0
               </span>
             </div>
@@ -68,7 +68,7 @@ const Navbar = () => {
           {/* Admin Shortcut */}
           <Link
             to="/admin/login"
-            className="bg-[#2E3A59] text-white px-4 py-2 rounded-md text-sm hover:bg-[#1F2A4A] transition-colors duration-200 font-medium shadow-sm"
+            className="bg-[#1a1a1a] text-white px-4 py-2 rounded-md text-sm hover:bg-[#2a2a2a] transition-colors duration-200 font-medium shadow-sm"
           >
             Admin Panel
           </Link>
@@ -82,8 +82,8 @@ const Navbar = () => {
               }} 
               className="focus:outline-none group"
             >
-              <div className="p-2 rounded-full hover:bg-[#D35400]/10 transition-colors duration-200">
-                <User className="w-5 h-5 text-[#1F1F1F] group-hover:text-[#D35400] transition-colors" />
+              <div className="p-2 rounded-full hover:bg-[#e8b954]/10 transition-colors duration-200">
+                <User className="w-5 h-5 text-[#1F1F1F] group-hover:text-[#e8b954] transition-colors" />
               </div>
             </button>
 
@@ -94,14 +94,14 @@ const Navbar = () => {
                     <Link
                       to="/employee/login"
                       onClick={() => setEmpDropdownOpen(false)}
-                      className="block px-4 py-2.5 text-sm text-[#1F1F1F] hover:bg-[#D35400]/10 hover:text-[#D35400] transition-colors duration-150"
+                      className="block px-4 py-2.5 text-sm text-[#1F1F1F] hover:bg-[#e8b954]/10 hover:text-[#e8b954] transition-colors duration-150"
                     >
                       Employee Login
                     </Link>
                     <Link
                       to="/employee/signup"
                       onClick={() => setEmpDropdownOpen(false)}
-                      className="block px-4 py-2.5 text-sm text-[#1F1F1F] hover:bg-[#D35400]/10 hover:text-[#D35400] transition-colors duration-150"
+                      className="block px-4 py-2.5 text-sm text-[#1F1F1F] hover:bg-[#e8b954]/10 hover:text-[#e8b954] transition-colors duration-150"
                     >
                       Employee Signup
                     </Link>
@@ -109,7 +109,7 @@ const Navbar = () => {
                 ) : (
                   <button
                     onClick={handleLogout}
-                    className="block w-full text-left px-4 py-2.5 text-sm text-[#D35400] hover:bg-[#D35400]/10 transition-colors duration-150"
+                    className="block w-full text-left px-4 py-2.5 text-sm text-[#e8b954] hover:bg-[#e8b954]/10 transition-colors duration-150"
                   >
                     Logout
                   </button>
@@ -127,8 +127,8 @@ const Navbar = () => {
               }} 
               className="focus:outline-none group"
             >
-              <div className="p-2 rounded-full hover:bg-[#D35400]/10 transition-colors duration-200">
-                <UserCircle className="w-5 h-5 text-[#1F1F1F] group-hover:text-[#D35400] transition-colors" />
+              <div className="p-2 rounded-full hover:bg-[#e8b954]/10 transition-colors duration-200">
+                <UserCircle className="w-5 h-5 text-[#1F1F1F] group-hover:text-[#e8b954] transition-colors" />
               </div>
             </button>
 
@@ -139,14 +139,14 @@ const Navbar = () => {
                     <Link
                       to="/customer/login"
                       onClick={() => setCustDropdownOpen(false)}
-                      className="block px-4 py-2.5 text-sm text-[#1F1F1F] hover:bg-[#D35400]/10 hover:text-[#D35400] transition-colors duration-150"
+                      className="block px-4 py-2.5 text-sm text-[#1F1F1F] hover:bg-[#e8b954]/10 hover:text-[#e8b954] transition-colors duration-150"
                     >
                       Customer Login
                     </Link>
                     <Link
                       to="/customer/signup"
                       onClick={() => setCustDropdownOpen(false)}
-                      className="block px-4 py-2.5 text-sm text-[#1F1F1F] hover:bg-[#D35400]/10 hover:text-[#D35400] transition-colors duration-150"
+                      className="block px-4 py-2.5 text-sm text-[#1F1F1F] hover:bg-[#e8b954]/10 hover:text-[#e8b954] transition-colors duration-150"
                     >
                       Customer Signup
                     </Link>
@@ -154,7 +154,7 @@ const Navbar = () => {
                 ) : (
                   <button
                     onClick={handleCustomerLogout}
-                    className="block w-full text-left px-4 py-2.5 text-sm text-[#D35400] hover:bg-[#D35400]/10 transition-colors duration-150"
+                    className="block w-full text-left px-4 py-2.5 text-sm text-[#e8b954] hover:bg-[#e8b954]/10 transition-colors duration-150"
                   >
                     Logout
                   </button>
@@ -169,7 +169,7 @@ const Navbar = () => {
       <nav className="md:hidden flex justify-between items-center px-5 py-3 bg-white shadow-sm relative border-b border-[#e0e0e0]">
         <button 
           onClick={toggleMobileMenu} 
-          className="p-2 rounded-full hover:bg-[#D35400]/10 transition-colors duration-200"
+          className="p-2 rounded-full hover:bg-[#e8b954]/10 transition-colors duration-200"
         >
           {mobileMenuOpen ? (
             <X className="w-5 h-5 text-[#1F1F1F]" />
@@ -181,9 +181,9 @@ const Navbar = () => {
         <div className="flex items-center gap-3">
           {/* Cart - Always visible */}
           <Link to="/cart" className="relative group">
-            <div className="p-2 rounded-full hover:bg-[#D35400]/10 transition-colors duration-200">
-              <ShoppingCart className="w-5 h-5 text-[#1F1F1F] group-hover:text-[#D35400] transition-colors" />
-              <span className="absolute -top-1 -right-1 bg-[#D35400] text-white text-[10px] font-bold rounded-full h-4 w-4 flex items-center justify-center">
+            <div className="p-2 rounded-full hover:bg-[#e8b954]/10 transition-colors duration-200">
+              <ShoppingCart className="w-5 h-5 text-[#1F1F1F] group-hover:text-[#e8b954] transition-colors" />
+              <span className="absolute -top-1 -right-1 bg-[#e8b954] text-white text-[10px] font-bold rounded-full h-4 w-4 flex items-center justify-center">
                 0
               </span>
             </div>
@@ -206,8 +206,8 @@ const Navbar = () => {
               }} 
               className="focus:outline-none group"
             >
-              <div className="p-2 rounded-full hover:bg-[#D35400]/10 transition-colors duration-200">
-                <User className="w-5 h-5 text-[#1F1F1F] group-hover:text-[#D35400] transition-colors" />
+              <div className="p-2 rounded-full hover:bg-[#e8b954]/10 transition-colors duration-200">
+                <User className="w-5 h-5 text-[#1F1F1F] group-hover:text-[#e8b954] transition-colors" />
               </div>
             </button>
 
@@ -218,14 +218,14 @@ const Navbar = () => {
                     <Link
                       to="/employee/login"
                       onClick={() => setEmpDropdownOpen(false)}
-                      className="block px-3 py-2 text-xs text-[#1F1F1F] hover:bg-[#D35400]/10 hover:text-[#D35400] transition-colors duration-150"
+                      className="block px-3 py-2 text-xs text-[#1F1F1F] hover:bg-[#e8b954]/10 hover:text-[#e8b954] transition-colors duration-150"
                     >
                       Employee Login
                     </Link>
                     <Link
                       to="/employee/signup"
                       onClick={() => setEmpDropdownOpen(false)}
-                      className="block px-3 py-2 text-xs text-[#1F1F1F] hover:bg-[#D35400]/10 hover:text-[#D35400] transition-colors duration-150"
+                      className="block px-3 py-2 text-xs text-[#1F1F1F] hover:bg-[#e8b954]/10 hover:text-[#e8b954] transition-colors duration-150"
                     >
                       Employee Signup
                     </Link>
@@ -233,7 +233,7 @@ const Navbar = () => {
                 ) : (
                   <button
                     onClick={handleLogout}
-                    className="block w-full text-left px-3 py-2 text-xs text-[#D35400] hover:bg-[#D35400]/10 transition-colors duration-150"
+                    className="block w-full text-left px-3 py-2 text-xs text-[#e8b954] hover:bg-[#e8b954]/10 transition-colors duration-150"
                   >
                     Logout
                   </button>
@@ -251,8 +251,8 @@ const Navbar = () => {
               }} 
               className="focus:outline-none group"
             >
-              <div className="p-2 rounded-full hover:bg-[#D35400]/10 transition-colors duration-200">
-                <UserCircle className="w-5 h-5 text-[#1F1F1F] group-hover:text-[#D35400] transition-colors" />
+              <div className="p-2 rounded-full hover:bg-[#e8b954]/10 transition-colors duration-200">
+                <UserCircle className="w-5 h-5 text-[#1F1F1F] group-hover:text-[#e8b954] transition-colors" />
               </div>
             </button>
 
@@ -263,14 +263,14 @@ const Navbar = () => {
                     <Link
                       to="/customer/login"
                       onClick={() => setCustDropdownOpen(false)}
-                      className="block px-3 py-2 text-xs text-[#1F1F1F] hover:bg-[#D35400]/10 hover:text-[#D35400] transition-colors duration-150"
+                      className="block px-3 py-2 text-xs text-[#1F1F1F] hover:bg-[#e8b954]/10 hover:text-[#e8b954] transition-colors duration-150"
                     >
                       Customer Login
                     </Link>
                     <Link
                       to="/customer/signup"
                       onClick={() => setCustDropdownOpen(false)}
-                      className="block px-3 py-2 text-xs text-[#1F1F1F] hover:bg-[#D35400]/10 hover:text-[#D35400] transition-colors duration-150"
+                      className="block px-3 py-2 text-xs text-[#1F1F1F] hover:bg-[#e8b954]/10 hover:text-[#e8b954] transition-colors duration-150"
                     >
                       Customer Signup
                     </Link>
@@ -278,7 +278,7 @@ const Navbar = () => {
                 ) : (
                   <button
                     onClick={handleCustomerLogout}
-                    className="block w-full text-left px-3 py-2 text-xs text-[#D35400] hover:bg-[#D35400]/10 transition-colors duration-150"
+                    className="block w-full text-left px-3 py-2 text-xs text-[#e8b954] hover:bg-[#e8b954]/10 transition-colors duration-150"
                   >
                     Logout
                   </button>
@@ -295,21 +295,21 @@ const Navbar = () => {
           <Link 
             to="/" 
             onClick={toggleMobileMenu}
-            className="block py-2.5 text-[#1F1F1F] hover:text-[#D35400] transition-colors duration-200 font-medium"
+            className="block py-2.5 text-[#1F1F1F] hover:text-[#e8b954] transition-colors duration-200 font-medium"
           >
             Home
           </Link>
           <Link 
             to="/shop" 
             onClick={toggleMobileMenu}
-            className="block py-2.5 text-[#1F1F1F] hover:text-[#D35400] transition-colors duration-200 font-medium"
+            className="block py-2.5 text-[#1F1F1F] hover:text-[#e8b954] transition-colors duration-200 font-medium"
           >
             Shop
           </Link>
           <Link 
             to="/artisans" 
             onClick={toggleMobileMenu}
-            className="block py-2.5 text-[#1F1F1F] hover:text-[#D35400] transition-colors duration-200 font-medium"
+            className="block py-2.5 text-[#1F1F1F] hover:text-[#e8b954] transition-colors duration-200 font-medium"
           >
             Artisans
           </Link>
