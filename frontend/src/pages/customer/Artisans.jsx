@@ -4,6 +4,26 @@ import { Link } from 'react-router-dom';
 const Artisans = () => {
   const [filter, setFilter] = useState('all');
   const [activeFilter, setActiveFilter] = useState('all');
+
+
+  const techniques = [
+  {
+    title: 'Embroidery',
+    image: 'https://r0jnyr57ua.ufs.sh/f/vsnjl5A7Osa5e5ZbvM4L6Dj7Cb5zVZdYfIextvOWFTHm1gPl',
+  },
+  {
+    title: 'Weaving',
+    image: 'https://r0jnyr57ua.ufs.sh/f/vsnjl5A7Osa50z1fHsZru6kfQcodbOhl9UjgTHnPvmLsytIS',
+  },
+  {
+    title: 'Block Printing',
+    image: 'https://r0jnyr57ua.ufs.sh/f/vsnjl5A7Osa5kOEirdszFCxgU6TOlnYvmIG279Soyhqt0rDk',
+  },
+  {
+    title: 'Pottery',
+    image: 'https://r0jnyr57ua.ufs.sh/f/vsnjl5A7Osa52miEcNDbekROaNPIvUGCZmopMSyLK8WtdbDg',
+  },
+];
  
   const artisans = [
     {
@@ -368,21 +388,21 @@ const Artisans = () => {
           </div>
           
           <div className="grid md:grid-cols-4 gap-6">
-            {['Embroidery', 'Weaving', 'Block Printing', 'Pottery'].map((craft, index) => (
+            {techniques.map((craft, index) => (
               <div key={index} className="group relative overflow-hidden rounded-xl h-48">
                 <div className="absolute inset-0 bg-gradient-to-t from-[#1a1a1a]/80 to-transparent z-10 flex items-end p-6">
-                  <h3 className="text-xl font-bold text-white">{craft}</h3>
+                  <h3 className="text-xl font-bold text-white">{craft.title}</h3>
                 </div>
                 <div className="absolute inset-0 bg-[#e8b954] opacity-0 group-hover:opacity-20 transition duration-500 z-0"></div>
-                <img 
-                  src={`https://source.unsplash.com/random/300x300/?${craft.toLowerCase().replace(' ', '')},craft`}
-                  alt={craft}
+                <img
+                  src={craft.image}
+                  alt={craft.title}
                   className="w-full h-full object-cover transition duration-700 group-hover:scale-110"
                 />
-                <Link 
-                  to={`/crafts/${craft.toLowerCase().replace(' ', '-')}`}
+                <Link
+                  to={`/crafts/${craft.title.toLowerCase().replace(' ', '-')}`}
                   className="absolute inset-0 z-20"
-                  aria-label={`Learn more about ${craft}`}
+                  aria-label={`Learn more about ${craft.title}`}
                 ></Link>
               </div>
             ))}

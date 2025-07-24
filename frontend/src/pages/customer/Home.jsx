@@ -2,12 +2,14 @@ import { FiArrowRight, FiCheck, FiShoppingBag, FiStar } from 'react-icons/fi';
 import { FaHandsHelping, FaLeaf, FaShippingFast } from 'react-icons/fa';
 import { FiMapPin } from 'react-icons/fi';
 import FAQSection from './HomeComponents/Faq';
+import HeroSection from './HomeComponents/safe';
 
 const HomePage = () => {
   return (
     <div className="bg-[#f9f8f5]">
+      <HeroSection/>
       {/* Hero Section with Artisan Showcase */}
-      <section className="relative bg-gradient-to-r from-[#3a3a3a] to-[#1a1a1a] text-white py-24 overflow-hidden">
+      {/* <section className="relative bg-gradient-to-r from-[#3a3a3a] to-[#1a1a1a] text-white py-24 overflow-hidden">
         <div className="container mx-auto px-6 flex flex-col md:flex-row items-center">
           <div className="md:w-1/2 mb-12 md:mb-0 z-10">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
@@ -54,7 +56,7 @@ const HomePage = () => {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* Value Proposition */}
       <section className="py-16 bg-white">
@@ -116,41 +118,43 @@ const HomePage = () => {
                 title: "Blue Pottery",
                 origin: "Jaipur, Rajasthan",
                 price: "₹2,499",
-                image: "/images/blue-pottery.jpg",
+                image: "https://r0jnyr57ua.ufs.sh/f/vsnjl5A7Osa5hx3xqbfaWbc93q0mGgPAvf2C5tOSXupDEei4",
                 rating: 4.8
               },
               {
                 title: "Pashmina Shawls",
                 origin: "Srinagar, Kashmir",
                 price: "₹8,999",
-                image: "/images/pashmina.jpg",
+                image: "https://r0jnyr57ua.ufs.sh/f/vsnjl5A7Osa5g5IyucYvuHv90TtSWdRw5qgsQrfaho87KM6L",
                 rating: 4.9
               },
               {
                 title: "Dokra Metalcraft",
                 origin: "Bastar, Chhattisgarh",
                 price: "₹3,200",
-                image: "/images/dokra.jpg",
+                image: "https://r0jnyr57ua.ufs.sh/f/vsnjl5A7Osa5QrTPRvUOlRUZT9cIVCtJ5DkFwWpofvaPK4Qm",
                 rating: 4.7
               },
               {
                 title: "Madhubani Paintings",
                 origin: "Madhubani, Bihar",
                 price: "₹1,799",
-                image: "/images/madhubani.jpg",
+                image: "https://r0jnyr57ua.ufs.sh/f/vsnjl5A7Osa5a8Lv8uJCa8Y3ucGnwVXJyiNf1IZvtEOHhLq6",
                 rating: 4.6
               }
             ].map((product, index) => (
-              <div key={index} className="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300">
-                <div className="relative h-64 overflow-hidden">
+              <div key={index} className="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-transform duration-500 hover:scale-105">
+                <div className="relative h-64 overflow-hidden flex justify-center items-center">
+                  <div className="w-[90%] h-[90%]   ">
                   <img
                     src={product.image}
                     alt={product.title}
-                    className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+                    className="w-full h-full  transition-transform duration-500 hover:scale-105 rounded-[8px]"
                   />
                   <div className="absolute top-3 right-3 bg-[#e8b954] text-[#2a2a2a] text-xs font-bold px-2 py-1 rounded-full">
                     Best Seller
                   </div>
+                </div>
                 </div>
                 <div className="p-5">
                   <div className="flex justify-between items-start mb-2">
@@ -243,19 +247,19 @@ const HomePage = () => {
               {
                 region: "Kashmir",
                 craft: "Pashmina Weaving",
-                image: "/images/kashmir.jpg",
+                image: "https://r0jnyr57ua.ufs.sh/f/vsnjl5A7Osa5Ui1cMK0SJMO9eBit2WGjpA46oFmfcbl135YK",
                 desc: "The delicate art of hand-spinning and weaving pashmina wool"
               },
               {
                 region: "Rajasthan",
                 craft: "Block Printing",
-                image: "/images/rajasthan.jpg",
+                image: "https://r0jnyr57ua.ufs.sh/f/vsnjl5A7Osa58RxEioYma2Y1D8p0vFyb6PAC7jgqor49flkh",
                 desc: "Ancient techniques using hand-carved wooden blocks"
               },
               {
                 region: "Karnataka",
                 craft: "Sandalwood Carving",
-                image: "/images/karnataka.jpg",
+                image: "https://r0jnyr57ua.ufs.sh/f/vsnjl5A7Osa5asPLeXJCa8Y3ucGnwVXJyiNf1IZvtEOHhLq6",
                 desc: "Intricate carvings from fragrant sandalwood"
               }
             ].map((item, index) => (
@@ -263,7 +267,7 @@ const HomePage = () => {
                 <img 
                   src={item.image} 
                   alt={item.region} 
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  className="w-full h-full  transition-transform duration-500 group-hover:scale-105"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
                 <div className="absolute bottom-0 left-0 p-6 text-white">
