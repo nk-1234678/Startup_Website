@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
 import axios from "axios";
+
 const EmployeeLogin = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -9,27 +10,26 @@ const EmployeeLogin = () => {
   const { login } = useAuth();
   const navigate = useNavigate();
 
-const handleLogin = async (e) => {
-  e.preventDefault();
-  setError("");
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    setError("");
 
-  try {
-    const res =await axios.post("/api/employee/login", {
-  email,
-  password,
-});
-
-
+    try {
+      const res = await axios.post("/api/employee/login", { email, password });
       const data = res.data;
 
-    login({ role: "employee", email: data.user.email }); // ✅ Fixed role
-    navigate("/");
-  } catch (err) {
-    console.error("Employee login error:", err.message);
-    setError("Something went wrong");
-  }
-};
+      // Save complete user with token in context/localStorage
+      login({
+        ...data.employee,
+        token: data.token,
+      });
 
+      navigate("/employee/profile");
+    } catch (err) {
+      console.error("Employee login error:", err.message);
+      setError("Invalid credentials or server error");
+    }
+  };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-[#f0f9ff] to-[#e0f2fe] flex items-center justify-center p-4">
@@ -40,11 +40,7 @@ const handleLogin = async (e) => {
         </div>
 
         <form onSubmit={handleLogin} className="p-6 space-y-4">
-          {error && (
-            <div className="bg-red-50 text-red-700 p-3 rounded-lg text-sm">
-              {error}
-            </div>
-          )}
+          {error && <div className="bg-red-50 text-red-700 p-3 rounded-lg text-sm">{error}</div>}
 
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-1">Email</label>
