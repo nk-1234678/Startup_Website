@@ -2,51 +2,72 @@ import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
 import axios from "axios";
+
 const EmployeeSignup = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+const position = "worker";
+
+
   const [errors, setErrors] = useState({});
   const navigate = useNavigate();
   const { login } = useAuth();
 
-const handleSignup = async (e) => {
-  e.preventDefault();
-  setErrors({});
+  const handleSignup = async (e) => {
+    e.preventDefault();
+    setErrors({});
 
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@!#%&*])[A-Za-z\d@!#%&*]{6,}$/;
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const passwordRegex =
+      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@!#%&*])[A-Za-z\d@!#%&*]{6,}$/;
 
-  const validationErrors = {};
-  if (!name.trim()) validationErrors.name = "Name is required";
-  if (!emailRegex.test(email)) validationErrors.email = "Invalid email format";
-  if (!passwordRegex.test(password)) {
-    validationErrors.password = "Password must be 6+ chars with uppercase, number, and special char";
-  }
+    const validationErrors = {};
+    if (!name.trim()) validationErrors.name = "Name is required";
+    if (!emailRegex.test(email)) validationErrors.email = "Invalid email format";
+    if (!passwordRegex.test(password)) {
+      validationErrors.password =
+        "Password must be 6+ chars with uppercase, number, and special char";
+    }
 
-  if (Object.keys(validationErrors).length > 0) {
-    setErrors(validationErrors);
-    return;
-  }
+    if (Object.keys(validationErrors).length > 0) {
+      setErrors(validationErrors);
+      return;
+    }
+
+    const payload = { name, email, password, position };
+    console.log("Sending payload:", payload); // ✅ Debugging line
 
     try {
-    const res = await axios.post("/api/employee/signup", {
-      name,
-      email,
-      password,
-    });
+      const res = await axios.post("/api/employee/signup", payload);
+      const data = res.data;
 
-    const data = res.data;
+      console.log("Signup success:", data); // ✅ Debugging line
 
-    login({ role: "employee", email: data.user.email }); // ✅ Fixed role
-    navigate("/");
-  } catch (err) {
-    console.error("Employee signup error:", err.message);
-    setErrors({ email: "Something went wrong" });
-  }
-};
+      // Save to AuthContext
+      login({ role: "employee", email: data.employee.email });
 
+      // Save to localStorage for admin dashboard
+      const existingEmployees = JSON.parse(localStorage.getItem("employees")) || [];
 
+      const newEmployee = {
+        id: data.employee._id,
+        name: data.employee.name,
+        email: data.employee.email,
+        joinDate: new Date().toISOString(),
+        role: "Employee",
+        status: "active",
+      };
+
+      localStorage.setItem("employees", JSON.stringify([...existingEmployees, newEmployee]));
+
+      navigate("/employee/profile");
+    } catch (err) {
+      console.error("Signup error:", err);
+      console.error("Backend error:", err.response?.data);
+      setErrors({ email: err.response?.data?.message || "Something went wrong" });
+    }
+  };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-[#f0f9ff] to-[#e0f2fe] flex items-center justify-center p-4">
@@ -64,7 +85,9 @@ const handleSignup = async (e) => {
               placeholder="Enter your name"
               value={name}
               onChange={(e) => setName(e.target.value)}
-              className={`w-full px-4 py-2 rounded-lg border ${errors.name ? 'border-red-500' : 'border-gray-300'} focus:ring-2 focus:ring-[#0369a1] focus:border-transparent`}
+              className={`w-full px-4 py-2 rounded-lg border ${
+                errors.name ? "border-red-500" : "border-gray-300"
+              } focus:ring-2 focus:ring-[#0369a1] focus:border-transparent`}
             />
             {errors.name && <p className="text-red-500 text-xs mt-1">{errors.name}</p>}
           </div>
@@ -76,7 +99,9 @@ const handleSignup = async (e) => {
               placeholder="your@email.com"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className={`w-full px-4 py-2 rounded-lg border ${errors.email ? 'border-red-500' : 'border-gray-300'} focus:ring-2 focus:ring-[#0369a1] focus:border-transparent`}
+              className={`w-full px-4 py-2 rounded-lg border ${
+                errors.email ? "border-red-500" : "border-gray-300"
+              } focus:ring-2 focus:ring-[#0369a1] focus:border-transparent`}
             />
             {errors.email && <p className="text-red-500 text-xs mt-1">{errors.email}</p>}
           </div>
@@ -88,14 +113,21 @@ const handleSignup = async (e) => {
               placeholder="Create a password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className={`w-full px-4 py-2 rounded-lg border ${errors.password ? 'border-red-500' : 'border-gray-300'} focus:ring-2 focus:ring-[#0369a1] focus:border-transparent`}
+              className={`w-full px-4 py-2 rounded-lg border ${
+                errors.password ? "border-red-500" : "border-gray-300"
+              } focus:ring-2 focus:ring-[#0369a1] focus:border-transparent`}
             />
             {errors.password ? (
               <p className="text-red-500 text-xs mt-1">{errors.password}</p>
             ) : (
-              <p className="text-gray-500 text-xs mt-1">6+ characters with uppercase, number, and special character</p>
+              <p className="text-gray-500 text-xs mt-1">
+                6+ characters with uppercase, number, and special character
+              </p>
             )}
           </div>
+
+          {/* Optional: Role/position field (hidden or selectable) */}
+          <input type="hidden" value={position} />
 
           <button
             type="submit"

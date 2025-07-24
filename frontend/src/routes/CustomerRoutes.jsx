@@ -10,6 +10,7 @@ import CustomerSignup from "../pages/customer/CustomerSignup";
 import CustomerLogin from "../pages/customer/CustomerLogin";
 import Checkout from '../pages/customer/Checkout';
 import OrderSuccess from '../pages/customer/OrderSuccess';
+import EmployeeProfile from '../pages/customer/EmployeeProfile';
 
 
 const CustomerRoutes = {
@@ -47,6 +48,10 @@ const CustomerRoutes = {
     {
       path: 'employee/signup',
       element: <EmployeeSignup />
+    },
+    {
+      path: 'employee/profile',
+      element: <EmployeeProfile />
     },
       {
       path: 'customer/signup',
