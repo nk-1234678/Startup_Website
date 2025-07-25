@@ -7,8 +7,7 @@ const EmployeeSignup = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-const position = "worker";
-
+  const position = "worker";
 
   const [errors, setErrors] = useState({});
   const navigate = useNavigate();
@@ -36,13 +35,13 @@ const position = "worker";
     }
 
     const payload = { name, email, password, position };
-    console.log("Sending payload:", payload); // ✅ Debugging line
+    console.log("Sending payload:", payload);
 
     try {
       const res = await axios.post("/api/employee/signup", payload);
       const data = res.data;
 
-      console.log("Signup success:", data); // ✅ Debugging line
+      console.log("Signup success:", data);
 
       // Save to AuthContext
       login({ role: "employee", email: data.employee.email });
@@ -70,79 +69,116 @@ const position = "worker";
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#f0f9ff] to-[#e0f2fe] flex items-center justify-center p-4">
-      <div className="w-full max-w-md bg-white rounded-2xl shadow-xl overflow-hidden">
-        <div className="bg-[#0369a1] p-6 text-center">
-          <h1 className="text-2xl font-bold text-white">Create Your Account</h1>
-          <p className="text-blue-100 mt-1">Join our artisan marketplace community</p>
-        </div>
-
-        <form onSubmit={handleSignup} className="p-6 space-y-4">
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">Full Name</label>
-            <input
-              type="text"
-              placeholder="Enter your name"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-              className={`w-full px-4 py-2 rounded-lg border ${
-                errors.name ? "border-red-500" : "border-gray-300"
-              } focus:ring-2 focus:ring-[#0369a1] focus:border-transparent`}
-            />
-            {errors.name && <p className="text-red-500 text-xs mt-1">{errors.name}</p>}
+    <div className="min-h-screen bg-[#f4f1e9] flex items-center justify-center p-4">
+      <div className="w-full max-w-2xl flex bg-white rounded-xl shadow-lg overflow-hidden border border-[#e8b954]/30">
+        {/* Left side - Employee Illustration */}
+        <div className="hidden md:flex w-1/2 bg-[#2a2a2a] p-8 flex-col justify-center items-center">
+          <div className="text-center mb-8">
+            <h2 className="text-3xl font-bold text-[#e8b954] mb-2">Join Our Team</h2>
+            <p className="text-[#f4f1e9]">Register as an employee to access the artisan marketplace</p>
           </div>
-
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">Email</label>
-            <input
-              type="email"
-              placeholder="your@email.com"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              className={`w-full px-4 py-2 rounded-lg border ${
-                errors.email ? "border-red-500" : "border-gray-300"
-              } focus:ring-2 focus:ring-[#0369a1] focus:border-transparent`}
+          <div className="w-full flex justify-center my-6">
+            <img 
+              src="https://illustrations.popsy.co/amber/worker.svg" 
+              alt="Employee illustration"
+              className="w-64 h-64 object-contain"
             />
-            {errors.email && <p className="text-red-500 text-xs mt-1">{errors.email}</p>}
           </div>
-
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">Password</label>
-            <input
-              type="password"
-              placeholder="Create a password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              className={`w-full px-4 py-2 rounded-lg border ${
-                errors.password ? "border-red-500" : "border-gray-300"
-              } focus:ring-2 focus:ring-[#0369a1] focus:border-transparent`}
-            />
-            {errors.password ? (
-              <p className="text-red-500 text-xs mt-1">{errors.password}</p>
-            ) : (
-              <p className="text-gray-500 text-xs mt-1">
-                6+ characters with uppercase, number, and special character
-              </p>
-            )}
-          </div>
-
-          {/* Optional: Role/position field (hidden or selectable) */}
-          <input type="hidden" value={position} />
-
-          <button
-            type="submit"
-            className="w-full bg-[#0369a1] hover:bg-[#0284c7] text-white font-medium py-3 px-4 rounded-lg transition duration-300"
-          >
-            Sign Up
-          </button>
-
-          <div className="text-center text-sm text-gray-600 pt-2">
-            Already have an account?{" "}
-            <Link to="/customer/login" className="text-[#0369a1] hover:underline font-medium">
-              Log in
+          <div className="text-center mt-4">
+            <p className="text-[#f4f1e9] text-sm">Already part of the team?</p>
+            <Link 
+              to="/employee/login" 
+              className="inline-block mt-2 px-4 py-2 rounded-md text-sm font-medium text-[#2a2a2a] bg-[#e8b954] hover:bg-[#d6a847] transition-colors"
+            >
+              Employee Login
             </Link>
           </div>
-        </form>
+        </div>
+
+        {/* Right side - Form */}
+        <div className="w-full md:w-1/2 p-8 md:p-10">
+          <div className="text-center mb-8">
+            <h2 className="text-2xl font-bold text-[#2a2a2a]">Employee Registration</h2>
+            <p className="text-[#5a5a5a] mt-1">Fill in your details to get started</p>
+          </div>
+
+          <form onSubmit={handleSignup} className="space-y-5">
+            <div>
+              <label className="block text-sm font-medium text-[#2a2a2a] mb-1">
+                Full Name
+              </label>
+              <input
+                type="text"
+                placeholder="Enter your name"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                className={`w-full px-4 py-3 rounded-lg border ${
+                  errors.name ? "border-red-500" : "border-[#5a5a5a]/30"
+                } focus:outline-none focus:ring-2 focus:ring-[#7a9f79] focus:border-transparent`}
+              />
+              {errors.name && <p className="text-red-500 text-xs mt-1">{errors.name}</p>}
+            </div>
+
+            <div>
+              <label className="block text-sm font-medium text-[#2a2a2a] mb-1">
+                Email
+              </label>
+              <input
+                type="email"
+                placeholder="your@email.com"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                className={`w-full px-4 py-3 rounded-lg border ${
+                  errors.email ? "border-red-500" : "border-[#5a5a5a]/30"
+                } focus:outline-none focus:ring-2 focus:ring-[#7a9f79] focus:border-transparent`}
+              />
+              {errors.email && <p className="text-red-500 text-xs mt-1">{errors.email}</p>}
+            </div>
+
+            <div>
+              <label className="block text-sm font-medium text-[#2a2a2a] mb-1">
+                Password
+              </label>
+              <input
+                type="password"
+                placeholder="Create a password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                className={`w-full px-4 py-3 rounded-lg border ${
+                  errors.password ? "border-red-500" : "border-[#5a5a5a]/30"
+                } focus:outline-none focus:ring-2 focus:ring-[#7a9f79] focus:border-transparent`}
+              />
+              {errors.password ? (
+                <p className="text-red-500 text-xs mt-1">{errors.password}</p>
+              ) : (
+                <p className="text-[#5a5a5a] text-xs mt-1">
+                  6+ characters with uppercase, number, and special character
+                </p>
+              )}
+            </div>
+
+            <input type="hidden" value={position} />
+
+            <button
+              type="submit"
+              className="w-full mt-6 py-3 px-4 rounded-lg font-medium text-white bg-[#7a9f79] hover:bg-[#6a8f69] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#7a9f79] transition-all"
+            >
+              Register as Employee
+            </button>
+
+            <div className="text-center md:hidden mt-4">
+              <p className="text-sm text-[#5a5a5a]">
+                Already have an account?{' '}
+                <Link 
+                  to="/employee/login" 
+                  className="font-medium text-[#7a9f79] hover:text-[#e8b954]"
+                >
+                  Log in
+                </Link>
+              </p>
+            </div>
+          </form>
+        </div>
       </div>
     </div>
   );

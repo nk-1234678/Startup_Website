@@ -10,7 +10,7 @@ const CustomerLogin = () => {
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
-    setError(""); // Clear error when user types
+    setError("");
   };
 
   const handleSubmit = async (e) => {
@@ -21,7 +21,7 @@ const CustomerLogin = () => {
     try {
       const res = await axios.post("/api/customers/login", formData);
       localStorage.setItem("customerToken", res.data.token);
-      navigate("/checkout"); // or redirect where needed
+      navigate("/checkout");
     } catch (err) {
       console.error(err);
       setError(err.response?.data?.message || "Login failed. Please try again.");
@@ -31,74 +31,82 @@ const CustomerLogin = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
-      <div className="sm:mx-auto sm:w-full sm:max-w-md">
-        <h2 className="mt-6 text-center text-3xl font-extrabold text-[#2B2B2B]">
-          Customer Login
-        </h2>
-        <p className="mt-2 text-center text-sm text-[#5A5A5A]">
-          Don't have an account?{' '}
-          <Link 
-            to="/customer/signup" 
-            className="font-medium text-[#E86C3B] hover:text-[#F5B700]"
-          >
-            Sign up here
-          </Link>
-        </p>
-      </div>
+    <div className="min-h-screen bg-[#f9f8f5] flex items-center justify-center p-4">
+      <div className="w-full max-w-4xl flex bg-white rounded-xl shadow-lg overflow-hidden">
+        {/* Left side - Illustration */}
+        <div className="hidden md:block w-1/2 bg-[#1a1a1a] p-8 flex flex-col justify-center items-center">
+          <div className="mb-8 text-center">
+            <h2 className="text-3xl font-bold text-[#e8b954] mb-2">Welcome Back!</h2>
+            <p className="text-[#f4f1e9]">Log in to access your account and continue shopping</p>
+          </div>
+          <div className="w-full flex justify-center my-4">
+             <img 
+            src="https://cdni.iconscout.com/illustration/premium/thumb/creating-account-11638616-9472338.png?f=webp" 
+            alt="Login illustration"
+            className="w-full max-w-xs"
+          />
+          </div>
+         
+          <div className="mt-8 text-center">
+            <p className="text-[#f4f1e9]">New to our platform?</p>
+            <Link 
+              to="/customer/signup" 
+              className="inline-block mt-2 px-6 py-2 rounded-full font-medium text-[#1a1a1a] bg-[#e8b954] hover:bg-[#d6a847] transition-colors"
+            >
+              Sign up here
+            </Link>
+          </div>
+        </div>
 
-      <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
-        <div className="bg-white py-8 px-4 shadow-md sm:rounded-lg sm:px-10 border border-[#5A5A5A]/20">
+        {/* Right side - Form */}
+        <div className="w-full md:w-1/2 p-8 md:p-12">
+          <div className="text-center mb-8">
+            <h2 className="text-3xl font-bold text-[#2a2a2a] mb-2">Customer Login</h2>
+            <p className="text-[#5a5a5a]">Enter your credentials to access your account</p>
+          </div>
+
           {error && (
-            <div className="mb-4 bg-red-50 border-l-4 border-red-500 p-4">
-              <div className="flex">
-                <div className="flex-shrink-0">
-                  <svg className="h-5 w-5 text-red-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clipRule="evenodd" />
-                  </svg>
-                </div>
-                <div className="ml-3">
-                  <p className="text-sm text-red-700">{error}</p>
-                </div>
-              </div>
+            <div className="mb-6 p-4 rounded-lg bg-red-50 border-l-4 border-red-500 flex items-start">
+              <svg className="h-5 w-5 text-red-500 mt-0.5 mr-3 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clipRule="evenodd" />
+              </svg>
+              <p className="text-sm text-red-700">{error}</p>
             </div>
           )}
 
-          <form onSubmit={handleSubmit} className="space-y-6">
+          <form onSubmit={handleSubmit} className="space-y-5">
             <div>
-              <label htmlFor="email" className="block text-sm font-medium text-[#2B2B2B]">
-                Email address
+              <label htmlFor="email" className="block text-sm font-medium text-[#2a2a2a] mb-1">
+                Email Address
               </label>
-              <div className="mt-1">
-                <input
-                  id="email"
-                  name="email"
-                  type="email"
-                  autoComplete="email"
-                  required
-                  value={formData.email}
-                  onChange={handleChange}
-                  className="appearance-none block w-full px-3 py-2 border border-[#5A5A5A]/30 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-[#E86C3B] focus:border-[#E86C3B] sm:text-sm"
-                />
-              </div>
+              <input
+                id="email"
+                name="email"
+                type="email"
+                autoComplete="email"
+                required
+                value={formData.email}
+                onChange={handleChange}
+                className="w-full px-4 py-3 rounded-lg border border-[#5a5a5a]/30 focus:outline-none focus:ring-2 focus:ring-[#e8b954] focus:border-transparent transition-all"
+                placeholder="your@email.com"
+              />
             </div>
 
             <div>
-              <label htmlFor="password" className="block text-sm font-medium text-[#2B2B2B]">
+              <label htmlFor="password" className="block text-sm font-medium text-[#2a2a2a] mb-1">
                 Password
               </label>
-              <div className="mt-1">
-                <input
-                  id="password"
-                  name="password"
-                  type="password"
-                  autoComplete="current-password"
-                  required
-                  value={formData.password}
-                  onChange={handleChange}
-                  className="appearance-none block w-full px-3 py-2 border border-[#5A5A5A]/30 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-[#E86C3B] focus:border-[#E86C3B] sm:text-sm"
-                />
-              </div>
+              <input
+                id="password"
+                name="password"
+                type="password"
+                autoComplete="current-password"
+                required
+                value={formData.password}
+                onChange={handleChange}
+                className="w-full px-4 py-3 rounded-lg border border-[#5a5a5a]/30 focus:outline-none focus:ring-2 focus:ring-[#e8b954] focus:border-transparent transition-all"
+                placeholder="••••••••"
+              />
             </div>
 
             <div className="flex items-center justify-between">
@@ -107,40 +115,49 @@ const CustomerLogin = () => {
                   id="remember-me"
                   name="remember-me"
                   type="checkbox"
-                  className="h-4 w-4 text-[#E86C3B] focus:ring-[#E86C3B] border-[#5A5A5A]/30 rounded"
+                  className="h-4 w-4 text-[#7a9f79] focus:ring-[#7a9f79] border-[#5a5a5a]/30 rounded"
                 />
-                <label htmlFor="remember-me" className="ml-2 block text-sm text-[#5A5A5A]">
+                <label htmlFor="remember-me" className="ml-2 block text-sm text-[#5a5a5a]">
                   Remember me
                 </label>
               </div>
 
-              <div className="text-sm">
-                <Link to="/customer/signup" className="font-medium text-[#E86C3B] hover:text-[#F5B700]">
-                  Forgot your password?
-                </Link>
-              </div>
+              <Link 
+                to="/customer/forgot-password" 
+                className="text-sm font-medium text-[#7a9f79] hover:text-[#e8b954]"
+              >
+                Forgot password?
+              </Link>
             </div>
 
-            <div>
-              <button
-                type="submit"
-                disabled={isLoading}
-                className={`w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-[#E86C3B] hover:bg-[#F5B700] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#E86C3B] transition-colors ${isLoading ? 'opacity-70 cursor-not-allowed' : ''}`}
-              >
-                {isLoading ? (
-                  <>
-                    <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                      <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                    </svg>
-                    Logging in...
-                  </>
-                ) : 'Log in'}
-              </button>
+            <button
+              type="submit"
+              disabled={isLoading}
+              className={`w-full mt-6 py-3 px-4 rounded-lg font-medium text-white bg-[#e8b954] hover:bg-[#d6a847] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#e8b954] transition-all flex justify-center items-center ${isLoading ? 'opacity-80 cursor-not-allowed' : ''}`}
+            >
+              {isLoading ? (
+                <>
+                  <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                  </svg>
+                  Logging in...
+                </>
+              ) : 'Log in'}
+            </button>
+
+            <div className="text-center md:hidden mt-4">
+              <p className="text-sm text-[#5a5a5a]">
+                Don't have an account?{' '}
+                <Link 
+                  to="/customer/signup" 
+                  className="font-medium text-[#7a9f79] hover:text-[#e8b954]"
+                >
+                  Sign up
+                </Link>
+              </p>
             </div>
           </form>
-
-          
         </div>
       </div>
     </div>
