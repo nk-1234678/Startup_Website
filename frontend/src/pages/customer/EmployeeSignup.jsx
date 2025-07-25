@@ -79,7 +79,7 @@ const EmployeeSignup = () => {
           </div>
           <div className="w-full flex justify-center my-6">
             <img 
-              src="https://illustrations.popsy.co/amber/worker.svg" 
+              src="https://png.pngtree.com/png-clipart/20230812/original/pngtree-account-interface-display-glyph-vector-picture-image_10429116.png" 
               alt="Employee illustration"
               className="w-64 h-64 object-contain"
             />
