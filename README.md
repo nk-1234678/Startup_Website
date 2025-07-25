@@ -57,3 +57,64 @@ Frontend Setup:
 cd frontend
 npm install
 npm run dev
+
+🌐 Tech Stack
+Frontend
+React 19 + Vite
+
+Tailwind CSS
+
+Axios
+
+React Router DOM
+
+Framer Motion
+
+Chart.js + React-Chartjs-2
+
+Backend
+Express.js
+
+MongoDB + Mongoose
+
+Multer (file upload)
+
+Cloudinary (image hosting)
+
+JWT (authentication)
+
+bcryptjs
+
+dotenv
+
+cookie-parser
+
+cors
+
+📁 Features (Modular Breakdown)
+🔒 Auth: Secure JWT-based login/signup
+
+☁️ Cloudinary Integration: For uploading and hosting images
+
+📈 Charts: Dashboard data visualization
+
+🧩 Modular Codebase: Scalable file structure
+
+🧾 API Ready: Cleanly separated controllers and routes
+
+📸 Screenshots
+(You can insert screenshots here by uploading images or using markdown image tags)
+
+💡 Contributing
+Fork this repository
+
+Create a new branch (git checkout -b feature-name)
+
+Make your changes
+
+Commit your changes (git commit -m "Added something")
+
+Push to the branch (git push origin feature-name)
+
+Open a Pull Request
+
