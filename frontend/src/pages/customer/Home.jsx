@@ -8,57 +8,7 @@ const HomePage = () => {
   return (
     <div className="bg-[#f9f8f5]">
       <HeroSection/>
-      {/* Hero Section with Artisan Showcase */}
-      {/* <section className="relative bg-gradient-to-r from-[#3a3a3a] to-[#1a1a1a] text-white py-24 overflow-hidden">
-        <div className="container mx-auto px-6 flex flex-col md:flex-row items-center">
-          <div className="md:w-1/2 mb-12 md:mb-0 z-10">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-              Preserve Heritage Through <span className="text-[#e8b954]">Authentic Crafts</span>
-            </h1>
-            <p className="text-lg text-[#d1d1d1] mb-8 max-w-lg">
-              Discover handcrafted treasures from master artisans across India. Each piece tells a story of tradition and skill.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4">
-              <button className="bg-[#e8b954] hover:bg-[#d8a944] text-[#2a2a2a] font-semibold py-3 px-8 rounded-lg transition duration-300 flex items-center gap-2">
-                Explore Collections <FiArrowRight />
-              </button>
-              <button className="border-2 border-white hover:bg-white/10 text-white font-semibold py-3 px-8 rounded-lg transition duration-300">
-                Meet Our Artisans
-              </button>
-            </div>
-          </div>
-          <div className="md:w-1/2 flex justify-center relative">
-            <div className="relative w-full max-w-lg">
-              <div className="absolute -top-10 -left-10 w-64 h-64 bg-[#e8b954]/20 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob"></div>
-              <div className="absolute -bottom-8 -right-8 w-64 h-64 bg-[#7a9f79]/20 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-2000"></div>
-              <div className="relative grid grid-cols-2 gap-4">
-                <img 
-                  src="https://www.aztradingpost.com/images/etched_navajo_pottery.jpg" 
-                  alt="Traditional pottery" 
-                  className="rounded-lg shadow-2xl object-cover h-64 w-full transform rotate-2"
-                />
-                <img 
-                  src="https://ml50nxyucbb4.i.optimole.com/5vTnaYk-obwWB2ZN/w:1080/h:1080/q:auto/https://designpgh.com/wp-content/uploads/2020/11/erin-barrnett-sunwoven-handwoven-textiles-12.jpg" 
-                  alt="Handwoven textiles" 
-                  className="rounded-lg shadow-2xl object-cover h-64 w-full transform -rotate-1 mt-8"
-                />
-                <img 
-                  src="https://i.etsystatic.com/24906723/r/il/5a9462/4674229274/il_fullxfull.4674229274_cffl.jpg" 
-                  alt="Artisan jewelry" 
-                  className="rounded-lg shadow-2xl object-cover h-64 w-full transform -rotate-2"
-                />
-                <img 
-                  src="https://www.fredzavadilwoodcarving.com/wp-content/uploads/2014/05/Relief-wood-carving-basswood-Fred-Zavadil-813x1024.jpg" 
-                  alt="Wood carving" 
-                  className="rounded-lg shadow-2xl object-cover h-64 w-full transform rotate-1 mt-8"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-      </section> */}
-
-      {/* Value Proposition */}
+     {/* Value Proposition */}
       <section className="py-16 bg-white">
         <div className="container mx-auto px-6">
           <div className="text-center mb-16">
