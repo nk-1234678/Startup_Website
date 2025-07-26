@@ -75,7 +75,7 @@ const HomePage = () => {
                 title: "Pashmina Shawls",
                 origin: "Srinagar, Kashmir",
                 price: "₹8,999",
-                image: "https://r0jnyr57ua.ufs.sh/f/vsnjl5A7Osa5g5IyucYvuHv90TtSWdRw5qgsQrfaho87KM6L",
+                image: "https://i.pinimg.com/1200x/d9/17/4e/d9174eddfcb47a5120b04e3150864f99.jpg",
                 rating: 4.9
               },
               {
@@ -147,7 +147,7 @@ const HomePage = () => {
             <div className="md:w-1/2">
               <div className="relative">
                 <img 
-                  src="/images/artisan-profile.jpg" 
+                  src="https://cdn8.dissolve.com/p/D985_58_196/D985_58_196_1200.jpg" 
                   alt="Master artisan at work" 
                   className="rounded-xl shadow-lg w-full"
                 />
@@ -197,7 +197,7 @@ const HomePage = () => {
               {
                 region: "Kashmir",
                 craft: "Pashmina Weaving",
-                image: "https://r0jnyr57ua.ufs.sh/f/vsnjl5A7Osa5Ui1cMK0SJMO9eBit2WGjpA46oFmfcbl135YK",
+                image: "https://i.pinimg.com/1200x/d9/17/4e/d9174eddfcb47a5120b04e3150864f99.jpg",
                 desc: "The delicate art of hand-spinning and weaving pashmina wool"
               },
               {

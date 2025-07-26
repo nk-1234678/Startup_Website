@@ -6,28 +6,49 @@ A full-stack startup web application built with **Vite + React (frontend)** and 
 
 ## 🗂 Folder Structure
 
-Startup_Website/
-├── backend/ # Express.js Backend
-│ ├── config/ # DB and environment configs
-│ ├── controllers/ # Route logic handlers
-│ ├── middleware/ # Auth, error handling, etc.
-│ ├── models/ # Mongoose schemas
-│ ├── routes/ # API routes
-│ ├── uploads/ # File uploads (images, docs)
-│ ├── utils/ # Helper utilities
-│ ├── .env # Environment variables
-│ ├── index.js # Entry point
-│ ├── package.json # Backend dependencies
-│
-├── frontend/ # React + Vite Frontend
-│ ├── public/ # Static files
-│ ├── src/ # Source code (components, pages)
-│ ├── index.html # HTML template
-│ ├── tailwind.config.js # Tailwind CSS config
-│ ├── vite.config.js # Vite config
-│ ├── package.json # Frontend dependencies
-│
-└── README.md # Project documentation
+/E-commerce
+├── /public
+│   └── index.html
+├── /src
+│   ├── /assets                     # Images, logos, icons
+│   ├── /components                # Reusable UI components
+│   │   ├── Navbar.jsx
+│   │   ├── Footer.jsx
+│   │   ├── Sidebar.jsx
+│   │   └── UserMenu.jsx           # User icon dropdown: Login/Signup/Logout
+│   ├── /context                   # Global state (Cart, Auth)
+│   │   ├── CartContext.js
+│   │   └── AuthContext.js
+│   ├── /layouts                   # App layouts
+│   │   ├── CustomerLayout.jsx     # With Navbar + Footer
+│   │   └── AdminLayout.jsx        # With Sidebar + Dashboard UI
+│   ├── /pages
+│   │   ├── /customer
+│   │   │   ├── Home.jsx
+│   │   │   ├── Shop.jsx
+│   │   │   ├── Cart.jsx
+│   │   │   ├── Artisans.jsx
+│   │   │   ├── EmployeeLogin.jsx
+│   │   │   └── EmployeeSignup.jsx
+│   │   │   ├── OrderSuccess.jsx
+│   │   │   └── Checkout.jsx
+│   │   ├── /admin
+│   │   │   ├── AdminLogin.jsx
+│   │   │   ├── AdminSignup.jsx
+│   │   │   └── Profile.jsx //admin profile
+│   │   └── Error401.jsx           # 🔐 Unauthorized route
+│   ├── /routes                    # Routing configs
+│   │   ├── CustomerRoutes.jsx
+│   │   ├── AdminRoutes.jsx
+│   │   ├── CompoundRoutes.jsx     # Combines admin & customer routes
+│   │   └── ProtectedRoute.jsx     # Guards for admin routes
+│   ├── App.jsx
+│   ├── main.jsx
+│   └── index.css                  # Global Tailwind/custom CSS
+├── .gitignore
+├── package.json
+├── README.md
+└── vite.config.js
 
 ---
 

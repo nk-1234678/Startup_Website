@@ -135,7 +135,8 @@ const Shop = () => {
             .filter(p => p.isFeatured)
             .slice(0, 4)
             .map(product => (
-              <ProductCard key={product.id} product={product} addToCart={addToCart} />
+              <ProductCard   key={product._id}
+    product={{ ...product, id: product._id }} addToCart={addToCart} />
             ))}
         </div>
       </section>
@@ -423,6 +424,12 @@ const ProductCard = ({ product, addToCart }) => {
         >
           <FiShoppingBag className="mr-2" /> Add to Cart
         </button>
+        <Link
+  to={`/product/${product._id}`}
+  className="mt-2 inline-block text-[#7a9f79] text-sm hover:underline"
+>
+  View Details →
+</Link>
       </div>
     </div>
   );

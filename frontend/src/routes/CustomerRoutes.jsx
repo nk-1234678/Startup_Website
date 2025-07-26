@@ -11,6 +11,7 @@ import CustomerLogin from "../pages/customer/CustomerLogin";
 import Checkout from '../pages/customer/Checkout';
 import OrderSuccess from '../pages/customer/OrderSuccess';
 import EmployeeProfile from '../pages/customer/EmployeeProfile';
+import ProductDetail from "../pages/customer/ProductDetail";
 
 
 const CustomerRoutes = {
@@ -60,6 +61,10 @@ const CustomerRoutes = {
     {
       path: 'customer/login',
       element: <CustomerLogin/>
+    },
+    {
+      path: 'product/:id',
+      element: <ProductDetail/>
     },
     {
       path: '401',
