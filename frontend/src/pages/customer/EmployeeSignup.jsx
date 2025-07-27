@@ -70,7 +70,7 @@ const EmployeeSignup = () => {
 
   return (
     <div className="min-h-screen bg-[#f4f1e9] flex items-center justify-center p-4">
-      <div className="w-full max-w-2xl flex bg-white rounded-xl shadow-lg overflow-hidden border border-[#e8b954]/30">
+      <div className="w-full max-w-3xl flex bg-white rounded-xl shadow-lg overflow-hidden border border-[#e8b954]/30">
         {/* Left side - Employee Illustration */}
         <div className="hidden md:flex w-1/2 bg-[#2a2a2a] p-8 flex-col justify-center items-center">
           <div className="text-center mb-8">
@@ -79,7 +79,7 @@ const EmployeeSignup = () => {
           </div>
           <div className="w-full flex justify-center my-6">
             <img 
-              src="https://png.pngtree.com/png-clipart/20230812/original/pngtree-account-interface-display-glyph-vector-picture-image_10429116.png" 
+              src="https://r0jnyr57ua.ufs.sh/f/vsnjl5A7Osa5YncB0TpuQZGB3qsr9485UpDgJERFchz61ySM" 
               alt="Employee illustration"
               className="w-64 h-64 object-contain"
             />

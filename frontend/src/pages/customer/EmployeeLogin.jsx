@@ -42,7 +42,7 @@ const EmployeeLogin = () => {
           </div>
           <div className="w-full flex justify-center my-6">
             <img 
-              src="https://png.pngtree.com/png-clipart/20230812/original/pngtree-account-interface-display-glyph-vector-picture-image_10429116.png" 
+              src="https://r0jnyr57ua.ufs.sh/f/vsnjl5A7Osa54pG2MIY83ETDbxkG0Oeyt5fu2dBS6CZsmRPJ" 
               alt="Employee login illustration"
               className="w-64 h-64 object-contain"
             />

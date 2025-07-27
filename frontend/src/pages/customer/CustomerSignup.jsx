@@ -46,7 +46,7 @@ const CustomerSignup = () => {
           </div>
           <div className="w-full flex justify-center my-4">
              <img 
-            src="https://cdni.iconscout.com/illustration/premium/thumb/creating-account-11638616-9472338.png?f=webp" 
+            src="https://r0jnyr57ua.ufs.sh/f/vsnjl5A7Osa54o3OpF83ETDbxkG0Oeyt5fu2dBS6CZsmRPJA" 
             alt="Login illustration"
             className="w-full max-w-xs"
           />
