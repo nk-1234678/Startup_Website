@@ -96,7 +96,7 @@ const AdminLogin = () => {
 
           <p className="mt-4 text-sm text-gray-600">
             Don’t have an account?{" "}
-            <Link to="/admin-signup" className="text-[#E86C3B] hover:underline">
+            <Link to="/admin/signup" className="text-[#E86C3B] hover:underline">
               Sign up
             </Link>
           </p>
