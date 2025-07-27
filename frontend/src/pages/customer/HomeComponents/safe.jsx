@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 
 const HeroSection = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -56,6 +57,7 @@ const HeroSection = () => {
       subtitle: "Off the beaten path adventures",
       description: "Explore unique places only locals know about. Our community of travel experts has curated the most authentic experiences worldwide.",
       cta: "Start Exploring",
+      link:"/shop",
       secondaryCta: "View Destinations",
       image: "https://r0jnyr57ua.ufs.sh/f/vsnjl5A7Osa5bnkMlKtVeg9asBXzKcdUu5Po6FhjmvntTyM2",
       stats: [
@@ -69,6 +71,7 @@ const HeroSection = () => {
       subtitle: "Share your expertise",
       description: "Join our global community of travel experts. Share your knowledge, earn rewards, and help travelers discover authentic experiences.",
       cta: "Join Our Community",
+      link:"/artisans",
       secondaryCta: "Learn Benefits",
       image: "https://images.unsplash.com/photo-1503220317375-aaad61436b1b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80",
       stats: [
@@ -82,6 +85,7 @@ const HeroSection = () => {
       subtitle: "Tailored to your interests",
       description: "Find the perfect hidden spots for your trip. Our AI-powered recommendations match your travel style and preferences.",
       cta: "Plan Now",
+      link:"/shop",
       secondaryCta: "Take Quiz",
       image: "https://images.unsplash.com/photo-1473496169904-658ba7c44d8a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80",
       stats: [
@@ -95,6 +99,7 @@ const HeroSection = () => {
       subtitle: "Connect with locals",
       description: "Immerse yourself in local communities and traditions. Our experiences are designed to create meaningful connections.",
       cta: "Learn More",
+      ink:"/shop",
       secondaryCta: "Read Stories",
       image: "https://images.unsplash.com/photo-1488085061387-422e29b40080?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80",
       stats: [
@@ -205,6 +210,7 @@ const HeroSection = () => {
                       transition: { delay: 0.9, duration: 0.7 }
                     }}
                   >
+                    <Link to={slide.link}>
                     <motion.button
                       whileHover={{ 
                         scale: 1.05,
@@ -215,6 +221,7 @@ const HeroSection = () => {
                     >
                       {slide.cta}
                     </motion.button>
+                    </Link>
                     
                     <motion.button
                       whileHover={{ 
