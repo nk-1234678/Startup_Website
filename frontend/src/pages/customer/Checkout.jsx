@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useCart } from '../../context/CartContext';
-import PaymentQR from '../../components/PaymentQR';
 import axios from 'axios';
 
 const Checkout = () => {
@@ -9,7 +8,6 @@ const Checkout = () => {
   const navigate = useNavigate();
   const { cartItems, clearCart } = useCart();
 
-  // Get products from direct-buy or cart
   const products = location.state?.product
     ? [{ ...location.state.product, quantity: location.state.quantity }]
     : cartItems;
@@ -21,6 +19,8 @@ const Checkout = () => {
     address: '',
     paymentProof: null,
   });
+
+  const UPI_ID = "8207780054@ibl";
 
   const totalAmount = products.reduce(
     (sum, item) => sum + item.price * item.quantity,
@@ -35,6 +35,16 @@ const Checkout = () => {
     setFormData({ ...formData, paymentProof: e.target.files[0] });
   };
 
+  const handleCopyUPI = () => {
+    navigator.clipboard.writeText(UPI_ID)
+      .then(() => {
+        alert("UPI ID copied to clipboard!");
+      })
+      .catch(() => {
+        alert("Failed to copy UPI ID.");
+      });
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -47,18 +57,16 @@ const Checkout = () => {
     try {
       const payload = new FormData();
 
-     const orderItems = products.map((p) => ({
-  product: String(p._id || p.id),
-  quantity: p.quantity,
-  price: p.price,
-  title: p.title,
-  thumbnail: p.thumbnail,
-  description: p.description,
-}));
-payload.append('items', JSON.stringify(orderItems));
+      const orderItems = products.map((p) => ({
+        product: String(p._id || p.id),
+        quantity: p.quantity,
+        price: p.price,
+        title: p.title,
+        thumbnail: p.thumbnail,
+        description: p.description,
+      }));
+      payload.append('items', JSON.stringify(orderItems));
 
-
-      // ✅ Append shipping info
       payload.append(
         'shippingAddress',
         JSON.stringify({
@@ -96,19 +104,19 @@ payload.append('items', JSON.stringify(orderItems));
   };
 
   return (
-    <div className="max-w-6xl mx-auto p-6">
-      <h1 className="text-2xl font-bold text-[#2B2B2B] mb-8">
+    <div className="max-w-7xl mx-auto p-6" style={{ backgroundColor: '#f9f8f5' }}>
+      <h1 className="text-3xl font-bold mb-8" style={{ color: '#2a2a2a' }}>
         Complete Your Purchase
       </h1>
 
       <div className="grid md:grid-cols-3 gap-8">
         {/* Order Summary */}
-        <div className="md:col-span-1 bg-white p-6 rounded-lg shadow-sm border border-gray-100">
-          <h2 className="text-lg font-semibold mb-4">Order Summary</h2>
+        <div className="md:col-span-1 p-6 rounded-lg shadow-sm border border-gray-200" style={{ backgroundColor: '#ffffff' }}>
+          <h2 className="text-lg font-semibold mb-4" style={{ color: '#2a2a2a' }}>Order Summary</h2>
           {products.map((item) => (
             <div
               key={item._id || item.id}
-              className="flex gap-4 py-4 border-b border-gray-100"
+              className="flex gap-4 py-4 border-b border-gray-200"
             >
               <img
                 src={item.thumbnail}
@@ -116,11 +124,11 @@ payload.append('items', JSON.stringify(orderItems));
                 className="w-20 h-20 object-cover rounded"
               />
               <div>
-                <h3 className="font-medium">{item.title}</h3>
-                <p className="text-sm text-gray-600">
+                <h3 className="font-medium" style={{ color: '#2a2a2a' }}>{item.title}</h3>
+                <p className="text-sm" style={{ color: '#5a5a5a' }}>
                   ₹{item.price} × {item.quantity}
                 </p>
-                <p className="font-medium">
+                <p className="font-medium" style={{ color: '#2a2a2a' }}>
                   ₹{(item.price * item.quantity).toFixed(2)}
                 </p>
               </div>
@@ -128,27 +136,61 @@ payload.append('items', JSON.stringify(orderItems));
           ))}
           <div className="mt-4 pt-4 border-t border-gray-200">
             <div className="flex justify-between font-semibold">
-              <span>Total</span>
-              <span>₹{totalAmount.toFixed(2)}</span>
+              <span style={{ color: '#2a2a2a' }}>Total</span>
+              <span style={{ color: '#2a2a2a' }}>₹{totalAmount.toFixed(2)}</span>
             </div>
           </div>
         </div>
 
         {/* Shipping & Payment Form */}
         <div className="md:col-span-2 space-y-6">
-          <PaymentQR amount={totalAmount} />
+
+          {/* Manual UPI Payment Details */}
+          <div className="p-6 rounded-lg shadow-sm border border-gray-200" style={{ backgroundColor: '#ffffff' }}>
+            <h2 className="text-xl font-semibold mb-4" style={{ color: '#2a2a2a' }}>Payment Details (Pay via UPI)</h2>
+            <p className="text-sm mb-4" style={{ color: '#5a5a5a' }}>
+              Please send ₹{totalAmount.toFixed(2)} to the following UPI ID using GPay, PhonePe, Paytm, etc.
+            </p>
+            <div className="mb-4">
+              <label className="block text-sm font-medium mb-1" style={{ color: '#2a2a2a' }}>
+                UPI ID
+              </label>
+              <div className="flex flex-col md:flex-row gap-3">
+                <div
+                  className="border rounded-md p-4 font-bold text-lg flex-1 text-center"
+                  style={{ backgroundColor: '#f4f1e9', color: '#2a2a2a' }}
+                >
+                  {UPI_ID}
+                </div>
+                <button
+                  type="button"
+                  onClick={handleCopyUPI}
+                  className="rounded-md px-6 py-3 font-semibold transition text-white"
+                  style={{ backgroundColor: '#e8b954' }}
+                  onMouseOver={e => e.currentTarget.style.backgroundColor = '#d3a94d'}
+                  onMouseOut={e => e.currentTarget.style.backgroundColor = '#e8b954'}
+                >
+                  Copy
+                </button>
+              </div>
+            </div>
+            <p className="text-xs" style={{ color: '#5a5a5a' }}>
+              After completing the payment, upload a screenshot below.
+            </p>
+          </div>
 
           <form
             onSubmit={handleSubmit}
-            className="bg-white p-6 rounded-lg shadow-sm border border-gray-100"
+            className="p-6 rounded-lg shadow-sm border border-gray-200"
+            style={{ backgroundColor: '#ffffff' }}
           >
-            <h2 className="text-lg font-semibold mb-4">
+            <h2 className="text-xl font-semibold mb-4" style={{ color: '#2a2a2a' }}>
               Shipping Information
             </h2>
 
             <div className="grid md:grid-cols-2 gap-4 mb-4">
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">
+                <label className="block text-sm font-medium mb-1" style={{ color: '#2a2a2a' }}>
                   Full Name
                 </label>
                 <input
@@ -161,7 +203,7 @@ payload.append('items', JSON.stringify(orderItems));
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">
+                <label className="block text-sm font-medium mb-1" style={{ color: '#2a2a2a' }}>
                   Email
                 </label>
                 <input
@@ -177,7 +219,7 @@ payload.append('items', JSON.stringify(orderItems));
 
             <div className="grid md:grid-cols-2 gap-4 mb-4">
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">
+                <label className="block text-sm font-medium mb-1" style={{ color: '#2a2a2a' }}>
                   Phone Number
                 </label>
                 <input
@@ -192,7 +234,7 @@ payload.append('items', JSON.stringify(orderItems));
             </div>
 
             <div className="mb-4">
-              <label className="block text-sm font-medium text-gray-700 mb-1">
+              <label className="block text-sm font-medium mb-1" style={{ color: '#2a2a2a' }}>
                 Shipping Address
               </label>
               <textarea
@@ -206,24 +248,30 @@ payload.append('items', JSON.stringify(orderItems));
             </div>
 
             <div className="mb-6">
-              <label className="block text-sm font-medium text-gray-700 mb-1">
+              <label className="block text-sm font-medium mb-1" style={{ color: '#2a2a2a' }}>
                 Payment Screenshot (After UPI Payment)
               </label>
               <input
                 type="file"
                 accept="image/*"
                 onChange={handleFileChange}
-                className="w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-[#E86C3B] file:text-white hover:file:bg-[#d45a2a]"
+                className="w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold"
+                style={{
+                  fileBackgroundColor: '#e8b954',
+                }}
                 required
               />
-              <p className="mt-1 text-xs text-gray-500">
-                Upload screenshot of successful payment
+              <p className="mt-1 text-xs" style={{ color: '#5a5a5a' }}>
+                Upload a screenshot showing successful payment.
               </p>
             </div>
 
             <button
               type="submit"
-              className="w-full bg-[#E86C3B] hover:bg-[#d45a2a] text-white py-2 px-4 rounded-md transition"
+              className="w-full py-3 px-4 rounded-md font-semibold transition text-white"
+              style={{ backgroundColor: '#e8b954' }}
+              onMouseOver={e => e.currentTarget.style.backgroundColor = '#d3a94d'}
+              onMouseOut={e => e.currentTarget.style.backgroundColor = '#e8b954'}
             >
               Confirm Order
             </button>
