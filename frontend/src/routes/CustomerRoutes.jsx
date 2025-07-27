@@ -11,7 +11,11 @@ import CustomerLogin from "../pages/customer/CustomerLogin";
 import Checkout from '../pages/customer/Checkout';
 import OrderSuccess from '../pages/customer/OrderSuccess';
 import EmployeeProfile from '../pages/customer/EmployeeProfile';
+<<<<<<< Updated upstream
 import ProductDetail from "../pages/customer/ProductDetail";
+=======
+import ProductDetails from '../pages/customer/ProductDetails';
+>>>>>>> Stashed changes
 
 
 const CustomerRoutes = {
@@ -29,6 +33,10 @@ const CustomerRoutes = {
     {
       path: 'cart',
       element: <Cart />
+    },
+    {
+    path:"product/:id",
+    element:<ProductDetails/>
     },
     {
       path: 'checkout',
