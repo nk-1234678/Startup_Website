@@ -8,6 +8,7 @@ import adminRoutes from "./routes/adminRoutes.js";
 import employeeRoutes from "./routes/employeeRoutes.js";
 import orderRoutes from './routes/orderRoutes.js';
 import customerRoutes from "./routes/customerRoutes.js";
+import subscribeRoutes from './routes/subscribeRoutes.js';
 
 dotenv.config();
 const app = express();
@@ -41,6 +42,9 @@ app.use("/api/admin", adminRoutes);
 app.use("/api/employee", employeeRoutes);
 app.use('/api/orders', orderRoutes);
 app.use("/api/customers", customerRoutes);
+
+app.use('/api/subscribe', subscribeRoutes);
+
 
 app.get("/", (req, res) => {
   res.send("🚀 Backend is live and connected!");

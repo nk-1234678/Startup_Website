@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faLinkedin,
@@ -8,9 +8,53 @@ import {
   faPinterest,
   faInstagram,
 } from "@fortawesome/free-brands-svg-icons";
-import { FiMail, FiMapPin, FiPhone, FiClock, FiArrowRight } from "react-icons/fi";
+import {
+  FiMail,
+  FiMapPin,
+  FiPhone,
+  FiClock,
+  FiArrowRight,
+} from "react-icons/fi";
+import axios from "axios";
 
 const Footer = () => {
+  const [email, setEmail] = useState("");
+  const [subscribed, setSubscribed] = useState(false);
+  const [loading, setLoading] = useState(false);
+
+  const handleSubscribe = async () => {
+  setLoading(true);
+  try {
+    const response = await fetch('/api/subscribe', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email }),
+    });
+
+    const data = await response.json();
+
+    if (response.ok) {
+      alert("🎉 Subscription successful! Check your email.");
+      setSubscribed(true);
+    } else {
+      alert(data.message || "❌ Failed to subscribe. Try again later.");
+    }
+  } catch (error) {
+    console.error("Subscription error:", error);
+    alert("❌ Something went wrong.");
+  } finally {
+    setLoading(false);
+  }
+};
+
+const handleUnsubscribe = () => {
+  setSubscribed(false); // or however you're handling subscription state
+  alert("You have unsubscribed.");
+};
+
+
+
+
   return (
     <footer className="bg-white text-charcoal-ink pt-14 px-4 md:px-8 lg:px-16 border-t border-gray-200">
       <div className="max-w-7xl mx-auto">
@@ -18,12 +62,12 @@ const Footer = () => {
         <div className="mb-12 bg-[#1a1a1a] rounded-xl p-8 text-white">
           <div className="flex flex-col md:flex-row items-center justify-between gap-8">
             <div className="text-center md:text-left max-w-2xl">
-              <h2 className="text-2xl md:text-3xl font-bold mb-3 ">
+              <h2 className="text-2xl md:text-3xl font-bold mb-3">
                 Join Our Artisan Community
               </h2>
               <p className="text-white/90 mb-4 md:mb-0">
-                Get exclusive access to new collections, artisan stories, and special offers. 
-                Sign up for our newsletter today.
+                Get exclusive access to new collections, artisan stories, and
+                special offers. Sign up for our newsletter today.
               </p>
             </div>
 
@@ -32,10 +76,16 @@ const Footer = () => {
                 <input
                   type="email"
                   placeholder="Your email address"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                   className="flex-1 px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#e8b954] text-charcoal-ink"
                 />
-                <button className="bg-[#e8b954] hover:bg-[#d6a845] text-white px-6 py-3 rounded-lg font-medium flex items-center justify-center gap-2 transition-colors duration-200">
-                  Subscribe <FiArrowRight />
+                <button
+                  onClick={subscribed ? handleUnsubscribe : handleSubscribe}
+                  disabled={loading}
+                  className="bg-[#e8b954] hover:bg-[#d6a845] text-white px-6 py-3 rounded-lg font-medium flex items-center justify-center gap-2 transition-colors duration-200"
+                >
+                  {subscribed ? "Unsubscribe" : "Subscribe"} <FiArrowRight />
                 </button>
               </div>
               <p className="text-xs text-white/70 mt-2 text-center sm:text-left">

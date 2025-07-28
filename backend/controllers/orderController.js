@@ -1,7 +1,7 @@
 import Order from '../models/orderModel.js';
 import Product from '../models/productModel.js';
 import mongoose from 'mongoose';
-import sendEmail from '../utils/sendEmail.js'; // ✅ import added
+import sendEmail from '../utils/SendEmail.js';
 
 export const createOrder = async (req, res) => {
   try {
