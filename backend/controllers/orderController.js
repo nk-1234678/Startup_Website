@@ -1,6 +1,7 @@
 import Order from '../models/orderModel.js';
 import Product from '../models/productModel.js';
 import mongoose from 'mongoose';
+import sendEmail from '../utils/sendEmail.js'; // ✅ import added
 
 export const createOrder = async (req, res) => {
   try {
@@ -58,9 +59,31 @@ export const createOrder = async (req, res) => {
 
     await newOrder.save();
 
+    // ✅ Send confirmation email after saving
+    const userEmail = shippingAddress?.email || req.customer?.email; // fallback
+    const userName = shippingAddress?.name || "Customer";
+
+    if (userEmail) {
+      const itemList = items.map(item =>
+        `<li>${item.title} × ${item.quantity} – ₹${item.price}</li>`
+      ).join("");
+
+      const emailHTML = `
+        <h2>Thank you for your order, ${userName}!</h2>
+        <p>Your order has been successfully placed. Here are the details:</p>
+        <ul>${itemList}</ul>
+        <p><strong>Total Amount:</strong> ₹${totalAmount}</p>
+        <p>We'll notify you when your items are shipped.</p>
+        <br>
+        <p>– Your Shop Team</p>
+      `;
+
+      await sendEmail(userEmail, "🛒 Your Order is Confirmed", emailHTML);
+    }
+
     res.status(201).json({
       success: true,
-      message: 'Order placed successfully',
+      message: 'Order placed successfully and email sent',
       orderId: newOrder._id,
     });
 
