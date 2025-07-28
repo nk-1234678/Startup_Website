@@ -52,63 +52,64 @@ const HeroSection = () => {
   
   // Enhanced slides with more content
   const slides = [
-    {
-      title: "Discover Hidden Gems",
-      subtitle: "Off the beaten path adventures",
-      description: "Explore unique places only locals know about. Our community of travel experts has curated the most authentic experiences worldwide.",
-      cta: "Start Exploring",
-      link:"/shop",
-      secondaryCta: "View Destinations",
-      image: "https://r0jnyr57ua.ufs.sh/f/vsnjl5A7Osa5bnkMlKtVeg9asBXzKcdUu5Po6FhjmvntTyM2",
-      stats: [
-        { value: "10K+", label: "Hidden Spots" },
-        { value: "95%", label: "Satisfaction" },
-        { value: "24/7", label: "Support" }
-      ]
-    },
-    {
-      title: "Become a Local Guide",
-      subtitle: "Share your expertise",
-      description: "Join our global community of travel experts. Share your knowledge, earn rewards, and help travelers discover authentic experiences.",
-      cta: "Join Our Community",
-      link:"/artisans",
-      secondaryCta: "Learn Benefits",
-      image: "https://images.unsplash.com/photo-1503220317375-aaad61436b1b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80",
-      stats: [
-        { value: "5K+", label: "Active Guides" },
-        { value: "$1M+", label: "Earned" },
-        { value: "50+", label: "Countries" }
-      ]
-    },
-    {
-      title: "Plan Your Next Adventure",
-      subtitle: "Tailored to your interests",
-      description: "Find the perfect hidden spots for your trip. Our AI-powered recommendations match your travel style and preferences.",
-      cta: "Plan Now",
-      link:"/shop",
-      secondaryCta: "Take Quiz",
-      image: "https://images.unsplash.com/photo-1473496169904-658ba7c44d8a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80",
-      stats: [
-        { value: "500+", label: "Itineraries" },
-        { value: "98%", label: "Accuracy" },
-        { value: "3 Min", label: "To Plan" }
-      ]
-    },
-    {
-      title: "Experience Authentic Culture",
-      subtitle: "Connect with locals",
-      description: "Immerse yourself in local communities and traditions. Our experiences are designed to create meaningful connections.",
-      cta: "Learn More",
-      ink:"/shop",
-      secondaryCta: "Read Stories",
-      image: "https://images.unsplash.com/photo-1488085061387-422e29b40080?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80",
-      stats: [
-        { value: "200+", label: "Communities" },
-        { value: "4.9★", label: "Ratings" },
-        { value: "100%", label: "Authentic" }
-      ]
-    }
-  ];
+  {
+    title: "Discover Hidden Gems",
+    subtitle: "Explore Culture Through Craft",
+    description: "Find unique handmade products rooted in tradition. Curated collections from different regions, crafted with passion.",
+    cta: "Start Exploring",
+    link: "/shop",
+    secondaryCta: "Browse Collections",
+    image: "https://r0jnyr57ua.ufs.sh/f/vsnjl5A7Osa5bnkMlKtVeg9asBXzKcdUu5Po6FhjmvntTyM2",
+    stats: [
+      { value: "1K+", label: "Authentic Products" },
+      { value: "95%", label: "Customer Satisfaction" },
+      { value: "24/7", label: "Support" }
+    ]
+  },
+  {
+    title: "Support Artisan Communities",
+    subtitle: "Handcrafted With Heart",
+    description: "Empower local artisans by shopping their work. Each product tells a story of heritage, culture, and craftsmanship.",
+    cta: "Meet Our Artisans",
+    link: "/artisans",
+    secondaryCta: "Learn More",
+    image: "https://images.unsplash.com/photo-1503220317375-aaad61436b1b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80",
+    stats: [
+      { value: "500+", label: "Skilled Artisans" },
+      { value: "100%", label: "Handmade" },
+      { value: "50+", label: "Regions Covered" }
+    ]
+  },
+  {
+    title: "Celebrate Indian Craftsmanship",
+    subtitle: "Tradition Meets Modern Design",
+    description: "Discover timeless crafts reimagined for today's world. From textiles to decor — every item is a masterpiece.",
+    cta: "Shop Now",
+    link: "/shop",
+    secondaryCta: "See What's New",
+    image: "https://images.unsplash.com/photo-1473496169904-658ba7c44d8a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80",
+    stats: [
+      { value: "200+", label: "Product Types" },
+      { value: "4.8★", label: "Avg. Reviews" },
+      { value: "100%", label: "Authentic" }
+    ]
+  },
+  {
+    title: "Experience Authentic Culture",
+    subtitle: "Crafts That Tell Stories",
+    description: "Explore the soul of local communities through their creations. Every item connects you to its maker's journey.",
+    cta: "Explore Culture",
+    link: "/shop",
+    secondaryCta: "Read Their Stories",
+    image: "https://images.unsplash.com/photo-1488085061387-422e29b40080?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80",
+    stats: [
+      { value: "300+", label: "Cultural Crafts" },
+      { value: "4.9★", label: "Loved by Customers" },
+      { value: "100%", label: "Story-Driven" }
+    ]
+  }
+];
+
 
   // Auto-advance slides every 4 seconds
   useEffect(() => {

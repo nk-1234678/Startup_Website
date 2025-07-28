@@ -78,15 +78,6 @@ const FAQSection = () => {
             </div>
           ))}
         </div>
-
-        <div className="mt-12 text-center">
-          <p className="text-[#5a5a5a] mb-6">
-            Still have questions? Our cultural ambassadors are here to help.
-          </p>
-          <button className="bg-[#7a9f79] hover:bg-[#6a8f69] text-white px-6 py-3 rounded-lg font-medium transition duration-300">
-            Contact Our Support Team
-          </button>
-        </div>
       </div>
     </section>
   );

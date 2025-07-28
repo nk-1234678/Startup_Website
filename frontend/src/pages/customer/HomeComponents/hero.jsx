@@ -6,35 +6,36 @@ const HeroSection = () => {
   const timerRef = useRef(null);
 
   const slides = [
-    {
-      title: "Discover Hidden Gems",
-      description: "Explore unique places only locals know about",
-      cta: "Start Exploring",
-      image: "https://images.unsplash.com/photo-1501555088652-021faa106b9b?auto=format&fit=crop&w=1740&q=80",
-       link: "/shop"
-    },
-    {
-      title: "Become a Local Guide",
-      description: "Share your knowledge and earn rewards",
-      cta: "Join Our Community",
-      image: "https://images.unsplash.com/photo-1503220317375-aaad61436b1b?auto=format&fit=crop&w=1740&q=80",
-      link: "/shop"
-    },
-    {
-      title: "Plan Your Next Adventure",
-      description: "Find the perfect hidden spots for your trip",
-      cta: "Plan Now",
-      image: "https://images.unsplash.com/photo-1473496169904-658ba7c44d8a?auto=format&fit=crop&w=1740&q=80",
-      link: "/shop"
-    },
-    {
-      title: "Experience Authentic Culture",
-      description: "Connect with local communities and traditions",
-      cta: "Learn More",
-      image: "https://images.unsplash.com/photo-1488085061387-422e29b40080?auto=format&fit=crop&w=1740&q=80",
-      link: "/shop"
-    }
-  ];
+  {
+    title: "Discover Hidden Gems",
+    description: "Explore offbeat locations and unique experiences",
+    cta: "Start Exploring",
+    image: "https://images.unsplash.com/photo-1501555088652-021faa106b9b?auto=format&fit=crop&w=1740&q=80",
+    link: "/shop"
+  },
+  {
+    title: "Shop Unique Handcrafted Items",
+    description: "Support artisans by purchasing authentic handmade products",
+    cta: "Browse Collection",
+    image: "https://images.unsplash.com/photo-1503220317375-aaad61436b1b?auto=format&fit=crop&w=1740&q=80",
+    link: "/shop"
+  },
+  {
+    title: "Celebrate Traditional Art",
+    description: "Bring home the beauty of regional crafts and culture",
+    cta: "Explore Now",
+    image: "https://images.unsplash.com/photo-1473496169904-658ba7c44d8a?auto=format&fit=crop&w=1740&q=80",
+    link: "/shop"
+  },
+  {
+    title: "Experience Authentic Culture",
+    description: "Discover traditions and stories behind every product",
+    cta: "Learn More",
+    image: "https://images.unsplash.com/photo-1488085061387-422e29b40080?auto=format&fit=crop&w=1740&q=80",
+    link: "/shop"
+  }
+];
+
 
   useEffect(() => {
     timerRef.current = setInterval(() => {
