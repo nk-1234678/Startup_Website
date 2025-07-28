@@ -18,6 +18,7 @@ import ProductDetail from "../pages/customer/ProductDetail";
 
 
 
+
 const CustomerRoutes = {
   path: '/',
   element: <CustomerLayout />,

@@ -1,10 +1,23 @@
 import nodemailer from 'nodemailer';
+import Subscriber from '../models/subscriberModel.js'; // Make sure this path is correct
 
 export const sendWelcomeEmail = async (req, res) => {
   const { email } = req.body;
+
   if (!email) return res.status(400).json({ message: "Email is required" });
 
   try {
+    // Check if already subscribed
+    const existingSubscriber = await Subscriber.findOne({ email });
+
+    if (existingSubscriber) {
+      return res.status(200).json({ message: "You are already subscribed!" });
+    }
+
+    // Save to DB
+    await Subscriber.create({ email });
+
+    // Setup transporter
     const transporter = nodemailer.createTransport({
       service: "gmail",
       auth: {
@@ -13,6 +26,7 @@ export const sendWelcomeEmail = async (req, res) => {
       },
     });
 
+    // Send email
     await transporter.sendMail({
       from: `"Handmade Heritage" <${process.env.EMAIL_USER}>`,
       to: email,
@@ -25,8 +39,9 @@ export const sendWelcomeEmail = async (req, res) => {
     });
 
     res.status(200).json({ message: "Welcome email sent!" });
+
   } catch (err) {
-    console.error(err);
+    console.error("Error sending welcome email:", err);
     res.status(500).json({ message: "Failed to send email" });
   }
 };

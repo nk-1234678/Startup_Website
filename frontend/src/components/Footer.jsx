@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faLinkedin,
@@ -22,7 +22,7 @@ const Footer = () => {
   const [subscribed, setSubscribed] = useState(false);
   const [loading, setLoading] = useState(false);
 
-  const handleSubscribe = async () => {
+ const handleSubscribe = async () => {
   setLoading(true);
   try {
     const response = await fetch('/api/subscribe', {
@@ -34,8 +34,16 @@ const Footer = () => {
     const data = await response.json();
 
     if (response.ok) {
-      alert("🎉 Subscription successful! Check your email.");
+      if (data.already) {
+        alert("✅ You're already subscribed.");
+      } else {
+        alert("🎉 Subscription successful! Check your email.");
+      }
       setSubscribed(true);
+      // when setting subscribed
+if (!data.already) {
+  localStorage.setItem("subscribed", "true");
+}
     } else {
       alert(data.message || "❌ Failed to subscribe. Try again later.");
     }
@@ -47,10 +55,21 @@ const Footer = () => {
   }
 };
 
+// on mount, check localStorage
+useEffect(() => {
+  const isSub = localStorage.getItem("subscribed") === "true";
+  setSubscribed(isSub);
+}, []);
+
+
+
+
 const handleUnsubscribe = () => {
-  setSubscribed(false); // or however you're handling subscription state
+  setSubscribed(false);
+  localStorage.removeItem("subscribed");
   alert("You have unsubscribed.");
 };
+
 
 
 

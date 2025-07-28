@@ -5,13 +5,9 @@ import upload from '../middleware/uploadMiddleware.js';
 
 const router = express.Router();
 
+// Create Order
 router.post('/', customerProtect, upload.single('paymentProof'), createOrder);
 
 
+
 export default router;
-
-
-
-
-
-
