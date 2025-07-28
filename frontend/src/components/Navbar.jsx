@@ -152,12 +152,22 @@ const Navbar = () => {
                     </Link>
                   </>
                 ) : (
+                  <>
                   <button
                     onClick={handleCustomerLogout}
                     className="block w-full text-left px-4 py-2.5 text-sm text-[#e8b954] hover:bg-[#e8b954]/10 transition-colors duration-150"
                   >
                     Logout
                   </button>
+                  <Link
+                      to="orderhistory"
+                      onClick={() => setCustDropdownOpen(false)}
+                      className="block px-4 py-2.5 text-sm text-[#1F1F1F] hover:bg-[#e8b954]/10 hover:text-[#e8b954] transition-colors duration-150"
+                    >
+                      History
+                    </Link>
+                  </>
+                  
                 )}
               </div>
             )}
